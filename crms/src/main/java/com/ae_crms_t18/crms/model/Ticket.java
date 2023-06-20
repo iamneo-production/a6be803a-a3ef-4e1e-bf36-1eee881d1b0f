@@ -15,10 +15,11 @@ public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "customer_id")
-    private Long customerId;
+    private Long customer_id;
 
     @Column(name = "subject")
     private String subject;
@@ -30,24 +31,24 @@ public class Ticket {
     private String status;
 
     @Column(name = "assigned_to")
-    private String assignedTo;
+    private String assigned_to;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private LocalDateTime updated_at;
 
     public Ticket() {}
 
-    public Ticket(Long customerId, String subject, String description, String status, String assignedTo, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.customerId = customerId;
+    public Ticket(Long customer_id, String subject, String description, String status, String assigned_to, LocalDateTime created_at, LocalDateTime updated_at) {
+        this.customer_id = customer_id;
         this.subject = subject;
         this.description = description;
         this.status = status;
-        this.assignedTo = assignedTo;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.assigned_to = assigned_to;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
     }
 
     public Long getId() {
@@ -58,12 +59,12 @@ public class Ticket {
         this.id = id;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public Long getcustomer_id() {
+        return customer_id;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setcustomer_id(Long customer_id) {
+        this.customer_id = customer_id;
     }
 
     public String getSubject() {
@@ -90,27 +91,27 @@ public class Ticket {
         this.status = status;
     }
 
-    public String getAssignedTo() {
-        return assignedTo;
+    public String getassigned_to() {
+        return assigned_to;
     }
 
-    public void setAssignedTo(String assignedTo) {
-        this.assignedTo = assignedTo;
+    public void setassigned_to(String assigned_to) {
+        this.assigned_to = assigned_to;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public LocalDateTime getcreated_at() {
+        return created_at;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setcreated_at(LocalDateTime created_at) {
+        this.created_at = created_at;
     }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
+    public LocalDateTime getupdated_at() {
+        return updated_at;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setupdated_at(LocalDateTime updated_at) {
+        this.updated_at = updated_at;
     }
 }
