@@ -1,0 +1,6 @@
+digraph "com.houari:iamneo-production_a6be803a-a3ef-4e1e-bf36-1eee881d1b0f:jar:1.0-SNAPSHOT" { 
+	"com.houari:iamneo-production_a6be803a-a3ef-4e1e-bf36-1eee881d1b0f:jar:1.0-SNAPSHOT" -> "org.junit.jupiter:junit-jupiter-api:jar:5.7.0:test" ; 
+	"org.junit.jupiter:junit-jupiter-api:jar:5.7.0:test" -> "org.apiguardian:apiguardian-api:jar:1.1.0:test" ; 
+	"org.junit.jupiter:junit-jupiter-api:jar:5.7.0:test" -> "org.opentest4j:opentest4j:jar:1.2.0:test" ; 
+	"org.junit.jupiter:junit-jupiter-api:jar:5.7.0:test" -> "org.junit.platform:junit-platform-commons:jar:1.7.0:test" ; 
+ } 
