@@ -1,4 +1,4 @@
-//Sale: id, name, customer_id, opportunity_id, amount, date, notes
+
 package com.examly.springapp.model;
 
 import java.time.LocalDateTime;
