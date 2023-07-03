@@ -1,0 +1,4 @@
+com/examly/springapp/model/Customer.class
+com/examly/springapp/service/CustomerService.class
+com/examly/springapp/repository/CustomerRepository.class
+com/examly/springapp/controller/CustomerController.class
