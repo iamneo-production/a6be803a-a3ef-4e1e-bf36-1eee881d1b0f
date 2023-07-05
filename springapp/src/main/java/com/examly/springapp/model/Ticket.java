@@ -37,7 +37,7 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name = "customer_id",referencedColumnName ="id")
-    @JsonIgnoreProperties({"purchase_history","communication_history"})
+    @JsonIgnoreProperties({"purchaseHistory","communicationHistory"})
     private Customer customer;
 
     private String subject;
@@ -48,7 +48,7 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name = "assigned_to")
-    @JsonIgnoreProperties({"password","conformPassword"})
+    @JsonIgnoreProperties({"password","confirmPassword"})
     private User assignedTo;
 
     @Column(name="created_at")
