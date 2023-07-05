@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>iamneo-production_a6be803a-a3ef-4e1e-bf36-1eee881d1b0f</name>
@@ -25,35 +23,10 @@
 	<filteredResources>
 		<filter>
 <<<<<<< HEAD
-			<id>1688400612087</id>
-=======
-<<<<<<< HEAD
 			<id>1687965031822</id>
 =======
-<<<<<<< HEAD
-<<<<<<< HEAD
-			<id>1688400623687</id>
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-			<id>1682922799757</id>
-=======
-			<id>1685454674963</id>
->>>>>>> 78cc94a7f916c60e455790042f6cbd6d1a138994
-=======
->>>>>>> Project-Workspace-vasanth-123
-			<id>1688219427314</id>
-=======
-			<id>1688215661212</id>
->>>>>>> 5f09b0860f22e8ccb11f49ff68a8d80da12e45d5
-<<<<<<< HEAD
->>>>>>> 7ba32b5f6e53b019eb5a31d1e8d3e574d221e2d1
-=======
->>>>>>> 2c64a4821d53090bb9549fc57bb788b64b928918
->>>>>>> Project-Workspace-vasanth-123
+			<id>1688218411333</id>
 >>>>>>> 51b4eb4598bbd70b865bb7e52e279cbefa6efe2a
->>>>>>> 98e7856e7f431ab0e2bbc297551c7ca87c42fa55
 			<name></name>
 			<type>30</type>
 			<matcher>
@@ -61,14 +34,9 @@
 <<<<<<< HEAD
 				<arguments>node_modules|.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
 =======
-<<<<<<< HEAD
-				<arguments>node_modules|.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
-=======
 				<arguments>node_modules|\.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
 >>>>>>> 51b4eb4598bbd70b865bb7e52e279cbefa6efe2a
->>>>>>> 98e7856e7f431ab0e2bbc297551c7ca87c42fa55
 			</matcher>
 		</filter>
 	</filteredResources>
 </projectDescription>
->>>>>>> f202420447c2663023eef5f681c85dd6be540bce
