@@ -29,7 +29,7 @@ public class Sale {
 
     @ManyToOne
     @JoinColumn(name="customer_id",referencedColumnName = "id")
-    @JsonIgnoreProperties({"purchase_history","communication_history"})
+    @JsonIgnoreProperties({"purchaseHistory","communicationHistory"})
     private Customer customer;
 
     @ManyToOne
