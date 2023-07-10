@@ -1,18 +1,16 @@
+
 import './App.css';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
-import Dashboard from './pages/Dashboard';
-import Customer from './pages/Customer';
-
-import Stages from './pages/Stages';
-import Task from './pages/Task';
-import Ticket from './pages/Ticket';
-import Lead from './pages/Lead';
-import Oppo from './pages/Oppo';
+import Home from './pages/Home/Home';
+import Customers from './pages/Customers/Customers';
+import Sales from './pages/Sales/Sales';
+import Statistics from './pages/Statistics/Statistics';
+import Tasks from './pages/Tasks/Tasks';
+import Tickets from './pages/Tickets/Tickets';
+import Leads from './pages/Leads/Leads';
+import Opportunities from './pages/Opportunities/Opportunities';
 import SideBar from './components/SideBar';
-
-import Email from './pages/Email';
-import Sale from './pages/Sale';
-
+import Navbar from './layout/Navbar';
 
 
 function App() {
@@ -20,20 +18,16 @@ function App() {
   return (
  
    <Router>
-   
     <SideBar>
     <Routes>
-      
-      <Route path="/" element={<Dashboard/>}/> 
-      <Route path="/customer" element={<Customer/>}/>
-      <Route path="/sale" element={<Sale/>}/>
-      
-      <Route path="/stage" element={<Stages/>}/>
-      <Route path="/task" element={<Task/>}/>
-      <Route path="/ticket" element={<Ticket/>}/>
-      <Route path="/lead" element={<Lead/>}/>
-      <Route path="/oppo" element={<Oppo/>}/>
-      <Route path="/Email" element={<Email/>}/>
+      <Route path="/" element={<Home/>}/> 
+      <Route path="/customer" element={<Customers/>}/>
+      <Route path="/sale" element={<Sales/>}/>
+      <Route path="/stage" element={<Statistics/>}/>
+      <Route path="/task" element={<Tasks/>}/>
+      <Route path="/ticket" element={<Tickets/>}/>
+      <Route path="/lead" element={<Leads/>}/>
+      <Route path="oppo" element={<Opportunities/>}/>
       <Route path="*" element={<>not found</>}/>
     </Routes>
     </SideBar>
