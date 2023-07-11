@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 const Tasks = () => {
   const [tasks,setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
+  const [selectedTasks, setSelectedTasks] = useState([]);
 
   const options=['All','even','true','false','odd'];
   const dropDownRef= useRef('All');
@@ -48,6 +49,17 @@ const Tasks = () => {
     }
   }
 
+  const onCheck=(e)=>{
+    const selected = e.target.value;
+    if(e.target.checked){
+      setSelectedTasks([...selectedTasks,selected]);
+    }else{
+      setSelectedTasks(selectedTasks.filter((item)=>item !== selected));
+    }
+    
+    console.log(selectedTasks);
+  }
+
   return (
     <div className='container'>
       <div className='title'>TASKS</div>
@@ -58,12 +70,15 @@ const Tasks = () => {
       <hr/>
       <table className='my-table'>
         <tr>
+          <th></th>
           <th>userId</th>
           <th>Id</th>
           <th>title</th>
           <th>completed</th>
         </tr>
-          {filteredTasks.map(task=><tr>
+          {filteredTasks.map(task=>
+          <tr>
+            <td><input type='checkbox' name='checkbox' value={task.id} onChange={onCheck}></input></td>
             <td>{task.userId}</td>
             <td>{task.id}</td>
             <td>{task.title}</td>
