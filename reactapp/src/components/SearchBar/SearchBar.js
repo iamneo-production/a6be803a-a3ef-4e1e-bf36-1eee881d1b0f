@@ -25,6 +25,7 @@ const SearchBar = (props) => {
           placeholder="Search..."
           value={searchTerm}
           onChange={handleChange}
+          id='input'
         />
         <button type="submit">
           <FaSearch/>
