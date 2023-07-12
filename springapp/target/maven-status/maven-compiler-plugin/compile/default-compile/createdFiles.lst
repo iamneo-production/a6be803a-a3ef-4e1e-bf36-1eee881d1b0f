@@ -1,6 +1,0 @@
-com/examly/springapp/controller/LeadController.class
-com/examly/springapp/SpringappApplication.class
-com/examly/springapp/repository/LeadRepository.class
-com/examly/springapp/service/LeadService.class
-com/examly/springapp/model/Lead.class
-com/examly/springapp/enumeration/LeadStatus.class
