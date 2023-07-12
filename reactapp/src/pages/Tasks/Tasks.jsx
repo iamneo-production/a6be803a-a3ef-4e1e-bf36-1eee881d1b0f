@@ -21,6 +21,7 @@ const Tasks = () => {
     }
     console.log(showActions)
   },[selectedTasks])
+  
   useEffect(()=>{
     fetch('https://jsonplaceholder.typicode.com/todos')
       .then(response => response.json())
