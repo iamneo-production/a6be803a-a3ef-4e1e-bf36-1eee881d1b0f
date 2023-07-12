@@ -9,7 +9,7 @@ const Customers = () => {
       <div className='title'>Customers</div>
       <div className='search'>
         <SearchBar options={options}/>
-        <NavLink to={"./createCustomer"} className='nav-link'><button className='create-button'>Create a Customer</button></NavLink>
+        <NavLink to={"./createCustomer"} className='nav-link'><button className='create-button'>Create Customer</button></NavLink>
       </div>
       <hr/>
     </>

@@ -8,10 +8,19 @@ const Tasks = () => {
   const [tasks,setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [selectedTasks, setSelectedTasks] = useState([]);
+  const [showActions, setShowActions] = useState(false);
 
   const options=['All','even','true','false','odd'];
   const dropDownRef= useRef('All');
 
+  useEffect(()=>{
+    if(selectedTasks.length>0){
+      setShowActions(true);
+    }else{
+      setShowActions(false);
+    }
+    console.log(showActions)
+  },[selectedTasks])
   useEffect(()=>{
     fetch('https://jsonplaceholder.typicode.com/todos')
       .then(response => response.json())
@@ -56,8 +65,6 @@ const Tasks = () => {
     }else{
       setSelectedTasks(selectedTasks.filter((item)=>item !== selected));
     }
-    
-    console.log(selectedTasks);
   }
 
   return (
@@ -67,6 +74,10 @@ const Tasks = () => {
         <SearchBar search={searchItem} options={options} refer={dropDownRef} onChange={onOptionSelect}/>
         <NavLink to={"./createTask"} className="nav-link"><button className='create-button'>Create Task</button></NavLink>
       </div>
+      {showActions?<select className='actions-button' name='actions'>
+        <option value="" disabled selected>Actions</option>
+        <option>delete</option>
+      </select>:<div></div>}
       <hr/>
       <table className='my-table'>
         <tr>
