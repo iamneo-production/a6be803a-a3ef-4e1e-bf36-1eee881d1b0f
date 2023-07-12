@@ -73,11 +73,12 @@ const Tasks = () => {
       <div className='search'>
         <SearchBar search={searchItem} options={options} refer={dropDownRef} onChange={onOptionSelect}/>
         <NavLink to={"./createTask"} className="nav-link"><button className='create-button'>Create Task</button></NavLink>
-      </div>
+        </div>
       {showActions?<select className='actions-button' name='actions'>
         <option value="" disabled selected>Actions</option>
         <option>delete</option>
       </select>:<div></div>}
+      
       <hr/>
       <table className='my-table'>
         <tr>
