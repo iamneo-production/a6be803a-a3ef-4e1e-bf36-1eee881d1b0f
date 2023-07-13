@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import{FaBars, FaHome}from'react-icons/fa'
 import{RiFileAddFill}from'react-icons/ri'
 import{CiBadgeDollar}from'react-icons/ci'
@@ -9,41 +9,41 @@ import{BiSearch, BiTask}from'react-icons/bi'
 import{BiSolidUserCircle} from'react-icons/bi'
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import{MdEmail}from'react-icons/md'
+import {MdEmail} from 'react-icons/md'
+
 const routes=[{
   path:"/",
-  name:"Dashboard",icon:<FaHome/>,
+  name:"Home",icon:<FaHome/>,
   },{
-    path:"/Customer",
-  name:"customer",icon:<BiSolidUserCircle/>,
+    path:"/customers",
+  name:"Customers",icon:<BiSolidUserCircle/>,
   },{
-    path:"/Lead",
-  name:"Lead",icon:<RiFileAddFill/>,
+    path:"/leads",
+  name:"Leads",icon:<RiFileAddFill/>,
   },{
-    path:"/Oppo",
-  name:"opportunity",icon:<CiBullhorn/>,
+    path:"/opportunities",
+  name:"Opportunities",icon:<CiBullhorn/>,
   },{
-    path:"/Sale",
-  name:"sale",icon:<CiBadgeDollar/>,
+    path:"/sales",
+  name:"Sales",icon:<CiBadgeDollar/>,
   },{
-    path:"/Stage",
-  name:"Analytics",icon:<IoMdAnalytics/>,
+    path:"/statistics",
+  name:"Statistics",icon:<IoMdAnalytics/>,
   },{
-    path:"/Task",
-  name:"Task",icon:<BiTask/>,
+    path:"/tasks",
+  name:"Tasks",icon:<BiTask/>,
   },{
-    path:"/Ticket",
-    name:"Ticket",icon:<ImTicket/>,
-    },
-    {
-      path:"/Email",
-      name:"Email",icon:<MdEmail/>,
-      }
+    path:"/tickets",
+    name:"Tickets",icon:<ImTicket/>,
+  },{
+    path:"/emails",
+    name:"Emails",icon:<MdEmail/>,
+  }
   ];
   
 
 const SideBar = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const inputAnimation = {
     hidden: {
@@ -84,11 +84,10 @@ const SideBar = ({ children }) => {
       <div className="main-container">
         <motion.div
           animate={{
-            width: isOpen ? "200px" : "45px",
+            width: isOpen ? "220px" : "45px",
 
             transition: {
               duration: 0.5,
-              type: "spring",
               damping: 10,
             },
           }}
@@ -114,7 +113,7 @@ const SideBar = ({ children }) => {
             </div>
           </div>
           <div className="search">
-            <div className="search_icon">
+            <div className="search_icon" >
               <BiSearch />
             </div>
             <AnimatePresence>
@@ -132,7 +131,7 @@ const SideBar = ({ children }) => {
             </div>
         <section className="routes">
             {routes.map((route)=>(
-                <NavLink  activeClassName="active" to={route.path}key={route.name}className="link">
+                <NavLink  activeClassName="active" to={route.path} key={route.name} className="link">
 
                   <div className="icon">{route.icon}</div>
                   <AnimatePresence>

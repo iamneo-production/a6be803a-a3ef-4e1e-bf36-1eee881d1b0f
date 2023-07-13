@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.examly.springapp.model.Customer;
 import com.examly.springapp.repository.CustomerRepository;
-import com.examly.springapp.Exception.ChildClassDeleteException;
+import com.examly.springapp.exception.ChildClassDeleteException;
 
 @Service
 public class CustomerService {
