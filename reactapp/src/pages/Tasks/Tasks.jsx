@@ -20,7 +20,7 @@ const Tasks = () => {
       setShowActions(false);
     }
     console.log(showActions)
-  },[selectedTasks])
+  },[selectedTasks])/home/coder/project/workspace/reactapp/src/pages/Sales
   
   useEffect(()=>{
     fetch('https://jsonplaceholder.typicode.com/todos')
