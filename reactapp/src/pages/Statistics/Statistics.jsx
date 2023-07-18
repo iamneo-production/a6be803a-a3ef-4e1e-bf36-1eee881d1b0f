@@ -1,8 +1,12 @@
 import React from 'react'
 
 const Statistics = () => {
+
   return (
-    <div className='title'>Statistics</div>
+    <>
+      <div className='title'>Statistics</div>
+      <hr/>
+    </>
   )
 }
 
