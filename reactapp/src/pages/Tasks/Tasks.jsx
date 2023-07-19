@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Navbar from './Navbar';
+import Navbar from '../../components/NavBar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './Tasks.css';
 import { format } from 'date-fns';
 
-const LEAD_BASE_REST_API_URL = 'https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/task';
+const TASK_BASE_REST_API_URL = 'https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/task';
 
 export default function Tasks() {
   const [tasks, setTasks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [createMode, setCreateMode] = useState(false);
   const [formData, setFormData] = useState({
+    id:'',
     name: '',
     description: '',
     assignedTo: {
         id:''
     },
-    dueDate: '',
-    completedAt: '',
+    dueDate: null,
+    completedAt: null,
   });
   const [selectedTasks, setSelectedTasks] = useState([]);
   const [viewTask, setViewTask] = useState(null);
@@ -28,11 +29,9 @@ export default function Tasks() {
 
   useEffect(() => {
     getAllTasks();
-    console.log(selectedTasks)
   }, []);
 
   useEffect(()=>{
-    console.log("useeffect"+formData)
     if(create){
         createTask();
     }
@@ -43,7 +42,7 @@ export default function Tasks() {
 
   const getAllTasks = async () => {
     try {
-      const response = await axios.get(LEAD_BASE_REST_API_URL);
+      const response = await axios.get(TASK_BASE_REST_API_URL);
       setTasks(response.data);
     } catch (error) {
       console.log('Error retrieving tasks:', error);
@@ -52,7 +51,7 @@ export default function Tasks() {
 
   const createTask = async () => {
     try {
-      await axios.post(LEAD_BASE_REST_API_URL,formData);
+      await axios.post(TASK_BASE_REST_API_URL,formData);
       getAllTasks();
       setCreateMode(false);
       resetFormData();
@@ -64,8 +63,9 @@ export default function Tasks() {
 
   const updateTask = async () => {
     try {
+      console.log(formData)
       const taskId = selectedTasks[0];
-      await axios.put(`${LEAD_BASE_REST_API_URL}/${taskId}`, formData);
+      await axios.put(`${TASK_BASE_REST_API_URL}/${taskId}`, formData);
       getAllTasks();
       setCreateMode(false);
       resetFormData();
@@ -77,7 +77,19 @@ export default function Tasks() {
 
   const deleteTask = async () => {
     try {
-      await axios.delete(`${LEAD_BASE_REST_API_URL}/${selectedTasks[0]}`);
+      await axios.delete(`${TASK_BASE_REST_API_URL}/${selectedTasks[0]}`);
+      getAllTasks();
+      setSelectedTasks([]);
+    } catch (error) {
+      console.log('Error deleting task:', error);
+    }
+  };
+
+  const deleteTasks = async () => {
+    try {
+      for(let id of selectedTasks){
+        await axios.delete(`${TASK_BASE_REST_API_URL}/${id}`);
+      }
       getAllTasks();
       setSelectedTasks([]);
     } catch (error) {
@@ -113,11 +125,20 @@ export default function Tasks() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    console.log(new Date(formData.dueDate))
     if (selectedTasks.length === 1) {
+      if(formData.completedAt===null){
         setFormData({
-            ...formData,
-            completedAt: new Date(formData.completedAt).toISOString()
+          ...formData,
+          dueDate: new Date(formData.dueDate).toISOString()
         })
+      }else{
+        setFormData({
+          ...formData,
+          completedAt: new Date(formData.completedAt).toISOString(),
+          dueDate: new Date(formData.dueDate).toISOString()
+        })
+      }
         setUpdate(true);
     } else {
         setFormData({
@@ -144,6 +165,9 @@ export default function Tasks() {
   };
 
   const handleDeleteSelected = () => {
+    if(selectedTasks.length>1){
+      deleteTasks();
+    }
     deleteTask();
   };
 
@@ -157,13 +181,14 @@ export default function Tasks() {
 
   const resetFormData = () => {
     setFormData({
+        id:'',
         name: '',
         description: '',
         assignedTo: {
             id:''
         },
-        dueDate: '',
-        completedAt: '',
+        dueDate: null,
+        completedAt: null,
     });
   };
 
@@ -180,13 +205,13 @@ export default function Tasks() {
 
   return (
     <div>
-      <Navbar searchQuery={searchQuery} onSearchChange={handleSearchChange} />
+      <Navbar name="TASKS" searchQuery={searchQuery} onSearchChange={handleSearchChange} />
       <div className="container mt-4">
         <div className="d-flex justify-content-between align-items-center">
           <h2>Tasks</h2>
           <div>
             {!createMode && (
-              <button className="btn btn-primary" onClick={handleCreateClick}>
+              <button className="btn btn-primary" onClick={handleCreateClick} disabled={selectedTasks.length>0}>
                 Create
               </button>
             )}
@@ -198,7 +223,6 @@ export default function Tasks() {
               Back
             </button>
             <form onSubmit={handleFormSubmit}>
-              {/* Lead form inputs */}
               <div className="form-group">
                 <label htmlFor="id">ID</label>
                 <input
@@ -254,7 +278,7 @@ export default function Tasks() {
                   className="form-control"
                   id="dueDate"
                   name="dueDate"
-                  value={formData.dueDate}
+                  value={formData.dueDate===null?null:new Date(formData.dueDate).toISOString().slice(0,10)}
                   onChange={handleFormChange}
                   required
                 >
@@ -267,7 +291,7 @@ export default function Tasks() {
                   className="form-control"
                   id="completedAt"
                   name="completedAt"
-                  value={formData.completedAt}
+                  value={formData.completedAt===null?null:new Date(formData.dueDate).toISOString().slice(0,10)}
                   onChange={handleFormChange}
                 >
                 </input>
@@ -277,7 +301,7 @@ export default function Tasks() {
               </button>
             </form>
           </div>
-        ) : viewTask ? (
+        ) : (viewTask ? (
           <div className="view-overlay">
             <div className="view-content">
               <button className="btn btn-primary mb-3" onClick={handleViewClose}>
@@ -321,9 +345,9 @@ export default function Tasks() {
                       {(selectedTasks.length===1)&&<button className="dropdown-item" onClick={handleEditSelected}>
                         Edit
                       </button>}
-                      <button className="dropdown-item" onClick={handleViewSelected}>
+                      {(selectedTasks.length===1)&&<button className="dropdown-item" onClick={handleViewSelected}>
                         View
-                      </button>
+                      </button>}
                     </div>
                   </div>
                 </div>
@@ -340,8 +364,8 @@ export default function Tasks() {
                         if (selectedTasks.length === tasks.length) {
                           setSelectedTasks([]);
                         } else {
-                          const allLeadIds = tasks.map((lead) => lead.id);
-                          setSelectedTasks(allLeadIds);
+                          const allTaskIds = tasks.map((task) => task.id);
+                          setSelectedTasks(allTaskIds);
                         }
                       }}
                     />
@@ -356,13 +380,12 @@ export default function Tasks() {
               </thead>
               <tbody>
                 {tasks
-                  .filter((lead) => {
-                    const { id, name, status } = lead;
+                  .filter((task) => {
+                    const { id, name } = task;
                     const search = searchQuery.toLowerCase();
                     return (
                       id.toString().toLowerCase().includes(search) ||
-                      name.toLowerCase().includes(search) ||
-                      status.toLowerCase().includes(search)
+                      name.toLowerCase().includes(search) 
                     );
                   })
                   .map((task) => (
@@ -385,7 +408,7 @@ export default function Tasks() {
               </tbody>
             </table>
           </div>
-        )}
+        ))}
       </div>
     </div>
   );

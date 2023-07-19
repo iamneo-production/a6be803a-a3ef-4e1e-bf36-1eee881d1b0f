@@ -3,11 +3,11 @@ import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = ({ searchQuery, onSearchChange, onSearchSubmit }) => {
+const Navbar = ({ name, searchQuery, onSearchChange, onSearchSubmit }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
-        <a className="navbar-brand" href="/">LEAD DASHBOARD</a>
+        <a className="navbar-brand" href="/">{name} DASHBOARD</a>
         <form className="form-inline">
           <div className="input-group">
             <input
@@ -19,7 +19,7 @@ const Navbar = ({ searchQuery, onSearchChange, onSearchSubmit }) => {
               onChange={onSearchChange}
               style={{ width: '444px', marginRight: '5px' }}
             />
-            <div className="input-group-append">
+            {/* <div className="input-group-append">
               <button
                 className="btn btn-outline-success"
                 type="submit"
@@ -27,7 +27,7 @@ const Navbar = ({ searchQuery, onSearchChange, onSearchSubmit }) => {
               >
                 Search
               </button>
-            </div>
+            </div> */}
             <div className="input-group-append" style={{ marginLeft: '5px' }}>
               <button className="btn btn-outline-primary" type="button">
                 <FontAwesomeIcon icon={faBell} />
