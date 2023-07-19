@@ -2,6 +2,7 @@ package com.examly.springapp.model;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,4 +39,10 @@ public class Customer {
     @JsonIgnoreProperties({"customer"})
     @Column(name="communication_history")
     private List<Ticket> communicationHistory;
+
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,targetEntity = Opportunity.class)
+    @JsonIgnoreProperties({"customer"})
+    @Column(name="opportunity_history")
+    @JsonBackReference
+    private List<Opportunity> opportunityHistory;
 }
