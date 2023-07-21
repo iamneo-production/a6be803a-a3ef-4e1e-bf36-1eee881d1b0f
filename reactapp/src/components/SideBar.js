@@ -88,6 +88,7 @@ const SideBar = ({ children }) => {
 
             transition: {
               duration: 0.5,
+              type: "spring",
               damping: 10,
             },
           }}
