@@ -7,5 +7,5 @@ public enum OpportunityStatus{
     NEGOTIATION,
     UPSELL,
     CLOSED_WIN,
-    CLOLSED_LOSS
+    CLOSED_LOSS
 }

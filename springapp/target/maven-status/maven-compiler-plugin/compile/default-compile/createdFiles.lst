@@ -4,12 +4,12 @@ com/examly/springapp/exception/GlobalExceptionHandler.class
 com/examly/springapp/SpringappApplication.class
 com/examly/springapp/model/Task.class
 com/examly/springapp/repository/SaleRepository.class
-com/examly/springapp/service/LeadService.class
 com/examly/springapp/repository/LeadRepository.class
+com/examly/springapp/service/LeadService.class
 com/examly/springapp/service/SaleService.class
 com/examly/springapp/model/Ticket.class
-com/examly/springapp/controller/TaskController.class
 com/examly/springapp/model/Opportunity.class
+com/examly/springapp/controller/TaskController.class
 com/examly/springapp/repository/TicketRepository.class
 com/examly/springapp/controller/CustomerController.class
 com/examly/springapp/controller/TicketController.class
@@ -31,6 +31,6 @@ com/examly/springapp/service/TaskService.class
 com/examly/springapp/service/TicketService.class
 com/examly/springapp/controller/SaleController.class
 com/examly/springapp/model/Lead.class
-com/examly/springapp/service/CustomerService.class
 com/examly/springapp/enumeration/OpportunityStatus.class
+com/examly/springapp/service/CustomerService.class
 com/examly/springapp/enumeration/UserRoles.class

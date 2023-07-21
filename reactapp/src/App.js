@@ -4,7 +4,7 @@ import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Customers from './pages/Customers/Customers';
 import Sales from './pages/Sales/Sales';
-import Statistics from './pages/Statistics/Statistics';
+import Analytics from './pages/Analytics/Analytics';
 import Tasks from './pages/Tasks/Tasks';
 import Tickets from './pages/Tickets/Tickets';
 import SideBar from './components/SideBar';
@@ -23,7 +23,7 @@ function App() {
       <Route path="/" element={<Home/>}/> 
       <Route path="/customers" element={<Customers/>}/>
       <Route path="/sales" element={<Sales/>}/>
-      <Route path="/statistics" element={<Statistics/>}/>
+      <Route path="/statistics" element={<Analytics/>
       <Route path="/tasks" element={<Tasks/>}/>
       <Route path="/tickets" element={<Tickets/>}/>
       <Route path="/emails" element={<Emails/>}/>
