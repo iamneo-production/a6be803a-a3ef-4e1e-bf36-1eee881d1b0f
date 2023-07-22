@@ -278,7 +278,7 @@ export default function Tasks() {
                   className="form-control"
                   id="dueDate"
                   name="dueDate"
-                  value={formData.dueDate===null?null:new Date(formData.dueDate).toISOString().slice(0,10)}
+                  value={formData.dueDate===null?(null):(new Date(formData.dueDate).toISOString().slice(0,10))}
                   onChange={handleFormChange}
                   required
                 >
@@ -291,7 +291,7 @@ export default function Tasks() {
                   className="form-control"
                   id="completedAt"
                   name="completedAt"
-                  value={formData.completedAt===null?null:new Date(formData.dueDate).toISOString().slice(0,10)}
+                  value={formData.completedAt===null?null:new Date(formData.completedAt).toISOString().slice(0,10)}
                   onChange={handleFormChange}
                 >
                 </input>
