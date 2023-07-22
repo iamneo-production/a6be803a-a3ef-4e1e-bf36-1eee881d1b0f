@@ -103,7 +103,7 @@ export default function Tasks() {
 
   const handleFormChange = (e) => {
     
-    if(e.target.name=='assignedTo'){
+    if(e.target.name==='assignedTo'){
         setFormData({
             ...formData,
             assignedTo: {
