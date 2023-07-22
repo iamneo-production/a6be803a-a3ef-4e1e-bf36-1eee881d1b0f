@@ -25,6 +25,7 @@ public class EmailController {
     private CustomerRepository customerRepository;
 
     static int email_count;
+    
     @PostConstruct
     public void init() {
         email_count = 0;
