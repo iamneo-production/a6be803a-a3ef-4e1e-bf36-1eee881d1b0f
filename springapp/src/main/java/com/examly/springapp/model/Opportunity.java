@@ -1,7 +1,7 @@
 package com.examly.springapp.model;
 
 import java.util.List;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.examly.springapp.enumeration.OpportunityStatus;
@@ -45,7 +45,7 @@ public class Opportunity {
     private Double value;
 
     @Column(name="close_date")
-    private LocalDateTime closeDate;
+    private LocalDate closeDate;
 
     private String notes; 
 

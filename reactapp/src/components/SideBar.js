@@ -28,7 +28,7 @@ const routes=[{
   name:"Sales",icon:<CiBadgeDollar/>,
   },{
     path:"/statistics",
-  name:"Statistics",icon:<IoMdAnalytics/>,
+  name:"Analytics",icon:<IoMdAnalytics/>,
   },{
     path:"/tasks",
   name:"Tasks",icon:<BiTask/>,

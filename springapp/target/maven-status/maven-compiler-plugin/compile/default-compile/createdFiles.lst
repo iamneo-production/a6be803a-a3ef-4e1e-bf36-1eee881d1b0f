@@ -1,4 +1,6 @@
 com/examly/springapp/controller/OpportunityController.class
+com/examly/springapp/DTO/SignUpDTO.class
+com/examly/springapp/service/AnalyticsService.class
 com/examly/springapp/repository/OpportunityRepository.class
 com/examly/springapp/exception/GlobalExceptionHandler.class
 com/examly/springapp/model/Task.class
@@ -10,20 +12,34 @@ com/examly/springapp/service/SaleService.class
 com/examly/springapp/model/Ticket.class
 com/examly/springapp/controller/TaskController.class
 com/examly/springapp/model/Opportunity.class
+<<<<<<< HEAD
+=======
+com/examly/springapp/controller/EmailController.class
+com/examly/springapp/repository/TicketRepository.class
+com/examly/springapp/controller/CustomerController.class
+>>>>>>> main
 com/examly/springapp/controller/TicketController.class
 com/examly/springapp/controller/CustomerController.class
 com/examly/springapp/repository/TicketRepository.class
 com/examly/springapp/model/Customer.class
 com/examly/springapp/enumeration/TicketStatus.class
 com/examly/springapp/controller/LeadController.class
+com/examly/springapp/DTO/OpportunityAnalyticsDTO.class
 com/examly/springapp/DTO/LoginDTO.class
 com/examly/springapp/model/User.class
 com/examly/springapp/controller/UserController.class
+<<<<<<< HEAD
 com/examly/springapp/enumeration/LeadStatus.class
+=======
+com/examly/springapp/controller/AnalyticsController.class
+>>>>>>> main
 com/examly/springapp/repository/TaskRepository.class
 com/examly/springapp/repository/UserRepository.class
+com/examly/springapp/controller/SMSController.class
 com/examly/springapp/service/OpportunityService.class
+com/examly/springapp/DTO/TicketAnalyticsDTO.class
 com/examly/springapp/service/UserService.class
+com/examly/springapp/config/CorsConfiguration.class
 com/examly/springapp/model/Sale.class
 com/examly/springapp/repository/CustomerRepository.class
 com/examly/springapp/exception/ChildClassDeleteException.class
@@ -31,6 +47,7 @@ com/examly/springapp/service/TaskService.class
 com/examly/springapp/service/TicketService.class
 com/examly/springapp/controller/SaleController.class
 com/examly/springapp/model/Lead.class
+com/examly/springapp/controller/EmailController$1.class
 com/examly/springapp/service/CustomerService.class
 com/examly/springapp/enumeration/OpportunityStatus.class
 com/examly/springapp/enumeration/UserRoles.class
