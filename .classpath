@@ -33,6 +33,8 @@
 	</classpathentry>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
@@ -47,6 +49,7 @@
 		</attributes>
 	</classpathentry>
 >>>>>>> 51b4eb4598bbd70b865bb7e52e279cbefa6efe2a
+>>>>>>> 98e7856e7f431ab0e2bbc297551c7ca87c42fa55
 	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
 		<attributes>
 			<attribute name="optional" value="true"/>

@@ -1,20 +1,19 @@
+
 package com.examly.springapp.model;
 
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PostPersist;
 import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import com.examly.springapp.enumeration.TicketStatus;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,34 +22,31 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="ticket")
-public class Ticket {
-    
+@Table(name="task")
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "customer_id",referencedColumnName ="id")
-    @JsonIgnoreProperties({"purchaseHistory","communicationHistory","opportunityHistory"})
-    private Customer customer;
-
-    private String subject;
+    private String name;
     private String description;
-
-    @Enumerated(EnumType.STRING)
-    private TicketStatus status;
 
     @ManyToOne
     @JoinColumn(name = "assigned_to")
-    @JsonIgnoreProperties({"password","confirmPassword"})
-    private User assignedTo;
+    @JsonIgnoreProperties({"password","conformPassword"})
+    private User assignedTo;//User
+
+    @Column(name="due_date")
+    private LocalDateTime dueDate;
+
+    @Column(name="completed_at")
+    private LocalDateTime completedAt;
 
     @Column(name="created_at")
     private LocalDateTime createdAt;
-    
+
     @Column(name="updated_at")
-    private LocalDateTime updatedAt; 
+    private LocalDateTime updatedAt;
+
     
     @PrePersist
     public void onSave(){
@@ -59,8 +55,9 @@ public class Ticket {
         this.updatedAt=currenDateTime;
     }
 
-    @PreUpdate
+    @PostPersist
     public void onUpdate(){
-        this.updatedAt = LocalDateTime.now();
+        LocalDateTime currenDateTime=LocalDateTime.now();
+        this.updatedAt=currenDateTime;
     }
 }

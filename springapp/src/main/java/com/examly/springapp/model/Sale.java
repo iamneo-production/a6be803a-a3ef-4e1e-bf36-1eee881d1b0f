@@ -1,4 +1,4 @@
-//Sale: id, name, customer_id, opportunity_id, amount, date, notes
+
 package com.examly.springapp.model;
 
 import java.time.LocalDateTime;
@@ -29,7 +29,7 @@ public class Sale {
 
     @ManyToOne
     @JoinColumn(name="customer_id",referencedColumnName = "id")
-    @JsonIgnoreProperties({"purchase_history","communication_history"})
+    @JsonIgnoreProperties({"purchaseHistory","communicationHistory","opportunityHistory"})
     private Customer customer;
 
     @ManyToOne
