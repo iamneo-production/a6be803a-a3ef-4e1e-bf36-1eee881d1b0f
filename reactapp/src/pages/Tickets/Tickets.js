@@ -34,15 +34,12 @@ export default function Tasks() {
   }, []);
 
   useEffect(()=>{
-    console.log(formData)
     if(create){
-        console.log(formData)
         createTicket()
     }else if(update){
-        console.log("update value"+update)
         updateTicket()
     }
-  },[formData,update])
+  },[formData,update,create])
 
   const getAllTickets = async () => {
     try {
@@ -137,11 +134,9 @@ export default function Tasks() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log('assignedto'+formData.assignedTo)
-    // if(formData.assignedTo!==null||formData.assignedTo.id===''){
-    //     console.log("changing formdata")
-    //     setFormData({...formData, assignedTo:formData.assignedTo})
-    // }
+    if(formData.assignedTo.id===''){
+        setFormData({...formData, assignedTo:null})
+    }
     if (selectedTickets.length === 1) {
         setUpdate(true);
     } else {
@@ -161,7 +156,6 @@ export default function Tasks() {
     } else {
       setSelectedTickets([...selectedTickets, taskId]);
     }
-    console.log(selectedTickets);
   };
 
   const handleDeleteSelected = () => {
@@ -328,7 +322,7 @@ export default function Tasks() {
                 </p>
                 <p>Name: {viewTickets.subject}</p>
                 <p>Desc: {viewTickets.description}</p>
-                Assigned to:{formData.assignedTo===null?
+                Assigned to:{formData.assignedTo!==null?
                 <p style={{border: '2px solid grey', borderRadius:'10px', padding: '10px',margin:'15px'}}> 
                     <p>ID: {viewTickets.assignedTo.id}</p>
                     <p>Name: {viewTickets.assignedTo.name}</p>
