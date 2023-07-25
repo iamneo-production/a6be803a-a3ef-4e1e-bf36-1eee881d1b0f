@@ -1,7 +1,6 @@
 import React, { useState , useEffect} from 'react';
 import axios from "axios";
-import './SalePage.css';
-import Navbar from './Navbar';
+import Navbar from '../../components/NavBar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 

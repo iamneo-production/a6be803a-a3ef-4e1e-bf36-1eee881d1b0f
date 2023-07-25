@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 
 const TICKETS_BASE_REST_API_URL = 'https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/ticket';
 
-export default function Tasks() {
+export default function Tickets() {
   const [tickets, setTickets] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [createMode, setCreateMode] = useState(false);
