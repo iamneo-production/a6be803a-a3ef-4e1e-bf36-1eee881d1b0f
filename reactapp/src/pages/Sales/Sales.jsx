@@ -54,8 +54,8 @@ export default function SalePage() {
       setSales(result)
       console.log(sales);
     })
-   
-  
+
+    
 },[])
  const [searchQuery, setSearchQuery] = useState('');
 const [createMode, setCreateMode] = useState(false);
