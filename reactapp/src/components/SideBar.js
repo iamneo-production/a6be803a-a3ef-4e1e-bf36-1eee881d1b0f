@@ -10,6 +10,14 @@ import{BiSolidUserCircle} from'react-icons/bi'
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {MdEmail} from 'react-icons/md'
+import {
+  FacebookShareButton,
+  LinkedinShareButton,
+  LinkedinIcon,
+  FacebookIcon,
+ 
+} from 'react-share';
+
 
 const routes=[{
   path:"/",
@@ -136,9 +144,28 @@ const SideBar = ({ children }) => {
               
             ))}
           </section>
+          <AnimatePresence>
+        {isOpen && (<motion.div className="social" variants={showAnimation}
+                        initial="hidden"
+                        animate="show"
+                        exit="hidden">
+          <FacebookShareButton
+            url="#"
+            quote={"Hey"}
+            hashtag="#React"
+          >
+            <FacebookIcon logoFillColor="white" round={true} />
+          </FacebookShareButton>
+          <LinkedinShareButton  url="#"
+            quote={"Hey"} >
+          <LinkedinIcon logoFillColor="white" round={true}></LinkedinIcon>
+          </LinkedinShareButton>
+        </motion.div>)}
+        </AnimatePresence>
         </motion.div>
-
+        
         <main>{children}</main>
+      
       </div>
     </>
   );
