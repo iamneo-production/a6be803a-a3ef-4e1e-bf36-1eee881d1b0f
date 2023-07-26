@@ -14,7 +14,7 @@ import javax.mail.internet.MimeMultipart;
 import javax.activation.DataSource;
 import javax.annotation.PostConstruct;
 import javax.mail.util.ByteArrayDataSource;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.List;
 import java.util.Properties;
 
