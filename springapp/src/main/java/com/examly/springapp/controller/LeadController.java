@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.examly.springapp.model.Lead;
 import com.examly.springapp.service.LeadService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
+@CrossOrigin(origins = "https://8081-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io")
 public class LeadController {
     
     @Autowired

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.examly.springapp.DTO.OpportunityAnalyticsDTO;
 import com.examly.springapp.DTO.TicketAnalyticsDTO;
 import com.examly.springapp.controller.EmailController;
-import com.examly.springapp.controller.SMSController;
+import com.examly.springapp.sms.SMSController; 
 import com.examly.springapp.enumeration.OpportunityStatus;
 import com.examly.springapp.enumeration.TicketStatus;
 import com.examly.springapp.repository.OpportunityRepository;
