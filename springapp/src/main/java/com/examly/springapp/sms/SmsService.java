@@ -11,7 +11,7 @@ import org.springframework.util.MultiValueMap;
 public class SmsService {
 
 
-    private final String ACCOUNT_SID ="AC9b27dee174a1485739b023c66c0e59d0";
+    private final String ACCOUNT_SID ="ACCOUNT_SID";
 
     private final String AUTH_TOKEN = "ac164474b42cb138a8a57fab88f9878a";
 

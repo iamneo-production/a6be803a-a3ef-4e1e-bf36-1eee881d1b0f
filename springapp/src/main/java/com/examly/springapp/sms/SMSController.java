@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @RestController
+@CrossOrigin(origins = "https://8081-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io")
 public class SMSController {
 
     @Autowired
@@ -19,7 +20,7 @@ public class SMSController {
     static int sms_count;
     static String sms_phone;
 
-    @PostConstruct
+   @PostConstruct
     public void init() {
         sms_count = 4;
     }
@@ -45,6 +46,8 @@ public class SMSController {
         try{
             sms.setPhone(sms_phone);
             service.send(sms);
+            sms_count++;
+
         }
         catch(Exception e){
             webSocket.convertAndSend(TOPIC_DESTINATION, getTimeStamp() + ": Error sending the SMS: "+e.getMessage());
