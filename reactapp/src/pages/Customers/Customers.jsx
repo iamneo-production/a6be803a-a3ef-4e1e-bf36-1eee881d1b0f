@@ -4,13 +4,15 @@ import Navbar from '../../components/NavBar/Navbar';
 import './Customers.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { useNavigate} from 'react-router-dom';
 
 
 const CUSTOMER_URL = 'https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/customer';
-
+const SMS_URL='https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/sms';
 export default function Customer() {
   const [customers, setCustomers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
   const [createMode, setCreateMode] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -139,6 +141,23 @@ export default function Customer() {
   const handleViewClose = () => {
     setViewCustomer(null);
   };
+  
+  const smsToCustomer = async (selectedCustomer) => {
+    try {
+      await axios.post(SMS_URL,selectedCustomer);
+      setSelectedCustomers([]);
+    } catch (error) {
+      console.log('Error sending phone no to customer:', error);
+    }
+  };
+  const handleSmsSelected = () => {
+    if (selectedCustomers.length === 1) {
+      const selectedCustomer = customers.find((customer) => customer.id === selectedCustomers[0]);
+      smsToCustomer(selectedCustomer);
+      navigate("/sms")
+    }
+  };
+
 
   return (
     <div>
@@ -309,6 +328,10 @@ export default function Customer() {
                       <button className="dropdown-item" onClick={handleViewSelected}>
                         View
                       </button>
+                      <button className="dropdown-item" onClick={handleSmsSelected}>
+                        sms
+                      </button>
+
                     </div>
                   </div>
                 </div>

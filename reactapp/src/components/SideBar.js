@@ -102,7 +102,9 @@ const SideBar = ({ children }) => {
                   exit="hidden"
                   className="logo"
                 >
-                 CRM
+                 <div className="bars">
+         <img src="favicon.ico" alt="crm"  onClick={toggle} />
+      </div>
                 </motion.h1>
               )}
             </AnimatePresence>
@@ -111,23 +113,7 @@ const SideBar = ({ children }) => {
               <FaBars onClick={toggle} />
             </div>
           </div>
-          <div className="search">
-            <div className="search_icon" >
-              <BiSearch />
-            </div>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.input
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden"
-                  variants={inputAnimation}
-                  type="text"
-                  placeholder="Search"
-                />
-              )}
-            </AnimatePresence>
-            </div>
+         
         <section className="routes">
             {routes.map((route)=>(
                 <NavLink  activeClassName="active" to={route.path} key={route.name} className="link">
