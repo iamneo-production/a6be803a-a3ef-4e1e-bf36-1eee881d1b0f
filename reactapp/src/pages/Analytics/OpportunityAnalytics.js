@@ -14,7 +14,7 @@ const OpportunityAnalytics = () => {
 
     const fetchOpportunityAnalytics = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/analytics/opportunityStatus');
+            const response = await axios.get('https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/analytics/opportunityStatus');
             setOpportunityAnalytics(response.data);
         } catch (error) {
             console.error(error);
