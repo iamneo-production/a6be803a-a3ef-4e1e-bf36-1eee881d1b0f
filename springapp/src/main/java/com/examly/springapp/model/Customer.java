@@ -45,4 +45,5 @@ public class Customer {
     @Column(name="opportunity_history")
     @JsonBackReference
     private List<Opportunity> opportunityHistory;
+    
 }
