@@ -104,14 +104,14 @@ export default function Tickets() {
   };
 
   const handleFormChange = (e) => {
-    if(e.target.name=='assignedTo'){
+    if(e.target.name==='assignedTo'){
         setFormData({
             ...formData,
             assignedTo: {
                 id:e.target.value
             },
             });
-    }else if(e.target.name=='customer'){
+    }else if(e.target.name==='customer'){
         setFormData({
             ...formData,
             customer: {

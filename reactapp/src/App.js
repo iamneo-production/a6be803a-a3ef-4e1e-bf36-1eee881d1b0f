@@ -11,6 +11,7 @@ import SideBar from './components/SideBar';
 import Emails from './pages/Emails/Email';
 import Opportunities from './pages/Opportunities/Opportunities';
 import Leads from './pages/Leads/Leads';
+import SmsForm from './pages/SmsForm';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <Route path="/emails" element={<Emails/>}/>
       <Route path="/opportunities" element={<Opportunities/>}/>
       <Route path="/leads" element={<Leads/>}/>
+      <Route path="/sms" element={<SmsForm/>}/>
       <Route path="*" element={<>not found</>}/>
     </Routes>
     </SideBar>
