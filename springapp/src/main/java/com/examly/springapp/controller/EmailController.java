@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Properties;
 
 @RestController
+@CrossOrigin(origins = "https://8081-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io")
 public class EmailController {
 
     @Autowired

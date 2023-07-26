@@ -14,7 +14,6 @@ import com.examly.springapp.model.Task;
 import com.examly.springapp.service.TaskService;
 
 @RestController
-
 @CrossOrigin(origins = "https://8081-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io")
 public class TaskController {
     @Autowired
