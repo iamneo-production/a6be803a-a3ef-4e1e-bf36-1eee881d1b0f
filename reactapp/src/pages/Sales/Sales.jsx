@@ -3,157 +3,142 @@ import axios from "axios";
 import Navbar from '../../components/NavBar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import '../Tasks/Tasks.css'
 
+const SALES_URL="https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/sale"
 
-export default function SalePage() {
+export default function Sales() {
   const [sales, setSales] = useState([]);
-  // useState([
-  //   // An array of sale objects
-  //   // Replace this with your actual data
-  //   {
-  //     id: '1',
-  //     name: 'vasanth',
-  //     customer_id: '23',
-  //     opportunity_id: '12',
-  //     date: '02/03/2002',
-  //     amount: '60000',
-  //     notes: 'its open and should initiate',
-  //   },
-  //   {
-  //     id: '2',
-  //     name: 'kiran',
-  //     customer_id: '45',
-  //     opportunity_id: '56',
-  //     date: '12/08/2012',
-  //     amount: '4500',
-  //     notes: 'its open and should initiate',
-  //   },
-  //   {
-  //     id: '3',
-  //     name: 'raj',
-  //     customer_id: '56',
-  //     opportunity_id: '90',
-  //     date: '02/03/2019',
-  //     amount: '59000',
-  //     notes: 'its open and should initiate',
-  //   },
-  //   {
-  //     id: '4',
-  //     name: 'sandy',
-  //     customer_id: '23',
-  //     opportunity_id: '89',
-  //     date: '12/02/2009',
-  //     amount: '5000',
-  //     notes: 'its open and should initiate',
-  //   },
-  // ]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [createMode, setCreateMode] = useState(false);
+  const [formData, setFormData] = useState({
+    id: '',
+    name: '',
+    customer:{
+      id:''
+    },
+    opportunity: {
+      id:''
+    },
+    amount: '',
+    notes: '',
+  });
+  const [selectedSales, setSelectedSales] = useState([]);
+  const [viewSale , setViewSale] = useState(null);
+
   useEffect(() => {
-    fetch("http://localhost:8080/crm/sale")
-    .then(res => res.json())
-    .then((result)=>{
-      setSales(result)
-      console.log(sales);
-    })
+    getallsales()
+  },[]);
 
-    
-},[])
- const [searchQuery, setSearchQuery] = useState('');
-const [createMode, setCreateMode] = useState(false);
-const [formData, setFormData] = useState({
-  id: '',
-  name: '',
-  customer_id: '',
-  opportunity_id: '',
-  date: '',
-  amount: '',
-  notes: '',
-});
+const getallsales = async() =>{
+  try {
+    const response = await axios.get(SALES_URL);
+    setSales(response.data);
+  } catch (error) {
+    console.log('Error retrieving Sales:', error);
+  }
+}
 
-const [selectedSales, setSelectedSales] = useState([]);
-const [viewSale , setViewSale] = useState(null);
+const createSale = async () => {
+  try {
+    await axios.post(SALES_URL, formData);
+    getallsales();
+    setCreateMode(false);
+    resetFormData();
+  } catch (error) {
+    console.log('Error creating sale:', error);
+  }
+};
 
+const updateSale = async () => {
+  try {
+    const saleId = selectedSales[0];
+    await axios.put(`${SALES_URL}/${saleId}`, formData);
+    getallsales();
+    setCreateMode(false);
+    resetFormData();
+  } catch (error) {
+    console.log('Error updating sale:', error);
+  }
+};
+
+const deleteSale = async () => {
+  try {
+    await axios.delete(`${SALES_URL}/${selectedSales[0]}`);
+    getallsales();
+    setSelectedSales([]);
+  } catch (error) {
+    console.log('Error deleting sale:', error);
+  }
+};
+
+const deleteSales = async () => {
+  try {
+    for(let id of selectedSales){
+      await axios.delete(`${SALES_URL}/${id}`);
+    }
+    getallsales();
+    setSelectedSales([]);
+  } catch (error) {
+    console.log('Error deleting sales:', error);
+  }
+};
 
 const handleSearchChange = (e) => {
   setSearchQuery(e.target.value);
 };
 
 const handleFormChange = (e) => {
+  if(e.target.name==='customer_id'){
+    setFormData({
+      ...formData,
+      customer:{
+        id:e.target.value
+      }
+    })
+  }else if(e.target.name==='opportunity_id'){
+    setFormData({
+      ...formData,
+      opportunity:{
+        id:e.target.value
+      }
+    })
+  }else(
   setFormData({
     ...formData,
     [e.target.name]: e.target.value,
-  });
+  }));
+  
 };
 
 const handleCreateClick = () => {
   setCreateMode(true);
+  resetFormData();
+};
+
+const resetFormData=()=>{
   setFormData({
     id: '',
     name: '',
-    customer_id: '',
-    opportunity_id: '',
-    date: '',
+    customer: {
+      id:''
+    },
+    opportunity: {
+      id:''
+    },
     amount: '',
     notes: '',
   });
-};
+}
 
 const handleFormSubmit = (e) => {
-  
   e.preventDefault();
-  let updatedSales;
-  if (selectedSales.length === 1) {
-    updatedSales = sales.map((sale) => {
-      if (sale.id === selectedSales[0]) {
-        return {
-          ...sale,
-          name: formData.name,
-          customer_id: formData.customer_id,
-          opportunity_id: formData.opportunity_id,
-          date: formData.date,
-          amount: formData.amount,
-          notes: formData.notes,
-        };
-      }
-      
-      return sale;
-    });
-  } else {
-   
-    const newLead = {
-      id: sales.length + 1,
-      name: formData.name,
-      customer_id: formData.customer_id,
-      opportunity_id: formData.opportunity_id,
-      date: formData.date,
-      amount: formData.amount,
-      notes: formData.notes,
-    };
-    updatedSales = [...sales, newLead];
-    fetch("http://localhost:8080/crm/sale",{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify(newLead)
-
-  }).then(()=>{
-    console.log("New Sales Added");
-  });
-  }
-
-
-  setSales(updatedSales);
-  setSelectedSales([]);
-  setCreateMode(false);
-  setFormData({
-    id: '',
-    name: '',
-    customer_id: '',
-    opportunity_id: '',
-    date: '',
-    amount: '',
-    notes: '',
-  });
-  
-};
+    if (selectedSales.length === 1) {
+      updateSale();
+    } else {
+      createSale();
+    }
+}
 
 const handleBackClick = () => {
   setCreateMode(false);
@@ -171,57 +156,35 @@ const handleCheckboxChange = (saleId) => {
 };
 
 const handleDeleteSelected = async() => {
-  const selectedSale = sales.find(
-    (sale) => sale.id === selectedSales[0]
-  );
-  await axios.delete(`http://localhost:8080/crm/sale/${selectedSale.id}`);
-  setSales(
-    sales.filter((sale) => !selectedSales.includes(sale.id))
-  );
-  setSelectedSales([]);
+  if(selectedSales===1){
+    deleteSale();
+  }else{
+    deleteSales();
+  }
   
 };
 
 
 const handleEditSelected = async () => {
   
-  if (selectedSales.length === 1) {
-    const selectedSale = sales.find(
-      (sale) => sale.id === selectedSales[0]
-    );
-
-    // Create a copy of the selected sale
-    const editedLead = {
-      ...selectedSale,
-    };
-    
-    // const loaduser =async()=>{
-    //   await axios.get(`http://localhost:8080/sale/${selectedSale.id}`);
-    //   setFormData(editedLead)
-    // }
-    await axios.put(`http://localhost:8080/crm/sale/${selectedSale.id}`,editedLead);
-    setFormData(editedLead);
-    setCreateMode(true);
-    // useEffect(()=>
-    // {
-    //   loaduser()
-    // },[])
+    if (selectedSales.length === 1) {
+      setCreateMode(true);
+      const selectedSale = sales.find((sale) => sale.id === selectedSales[0]);
+      setFormData(selectedSale);
+    }
 }
-  }
 
 const handleViewSelected = async() => {
   if (selectedSales.length === 1) {
     const selectedSale = sales.find((sale) => sale.id === selectedSales[0]);
-    const view = await axios.get(`http://localhost:8080/crm/sale/purchaseHistory/${selectedSale.id}`)
-    const finalsale = {...selectedSale,Purchase_History :view.data}
-    console.log(finalsale);
-    setViewSale(finalsale);
+    setViewSale(selectedSale);
   }
 };
 
 const handleViewClose = () => {
   setViewSale(null);
 };
+
 return (
   <div>
     <Navbar searchQuery={searchQuery} onSearchChange={handleSearchChange} />
@@ -262,7 +225,7 @@ return (
                 className="form-control"
                 id="customer_id"
                 name="customer_id"
-                value={formData.customer_id}
+                value={formData.customer.id}
                 onChange={handleFormChange}
               />
             </div>
@@ -274,17 +237,9 @@ return (
                 className="form-control"
                 id="opportunity_id"
                 name="opportunity_id"
-                value={formData.opportunity_id}
+                value={formData.opportunity.id}
                 onChange={handleFormChange}
               />
-            </div>
-            <div className="form-group">
-              <label htmlFor="date">Date</label>
-              <input type="date"
-               className="form-control"
-              name="date" 
-              value={formData.date} 
-              onChange={handleFormChange} />
             </div>
             <div className="form-group">
               <label htmlFor="amount">Amount</label>
@@ -322,12 +277,23 @@ return (
               <h3>Sale Details</h3>
               <p>ID: {viewSale.id}</p>
               <p>Name: {viewSale.name}</p>
-              <p>Customer Id: {viewSale.customer_id}</p>
-              <p>Opportunity Id: {viewSale.opportunity_id}</p>
+              Customer:<p style={{border: '2px solid grey', borderRadius:'10px', padding: '10px',margin:'15px'}}> 
+                    <p>ID: {viewSale.customer.id}</p>
+                    <p>Name: {viewSale.customer.name}</p>
+                    <p>Email ID: {viewSale.customer.email}</p>
+                    <p>Phone: {viewSale.customer.phone}</p>
+                    <p>Address: {viewSale.customer.address}</p>
+                </p>
+                Opportunity:<p style={{border: '2px solid grey', borderRadius:'10px', padding: '10px',margin:'15px'}}> 
+                    <p>ID: {viewSale.opportunity.id}</p>
+                    <p>Name: {viewSale.opportunity.name}</p>
+                    <p>Status: {viewSale.opportunity.status}</p>
+                    <p>Value: {viewSale.opportunity.value}</p>
+                    <p>notes: {viewSale.opportunity.notes}</p>
+                </p>
               <p>Amount: {viewSale.amount}</p>
               <p>Date: {viewSale.date}</p>
               <p>Notes: {viewSale.notes}</p>
-              <p>Purchase_History: {viewSale.Purchase_History}</p>
 
             </div>
           </div>
@@ -351,17 +317,18 @@ return (
                     <button className="dropdown-item" onClick={handleDeleteSelected}>
                       Delete
                     </button>
-                    <button className="dropdown-item" onClick={handleEditSelected}>
+                    {selectedSales===1&&<button className="dropdown-item" onClick={handleEditSelected}>
                       Edit
-                    </button>
-                    <button className="dropdown-item" onClick={handleViewSelected}>
+                    </button>}
+                    {selectedSales===1&&<button className="dropdown-item" onClick={handleViewSelected}>
                         View
-                      </button>
+                      </button>}
                   </div>
                 </div>
               </div>
             )}
           </div>
+          {console.log(selectedSales)}
           <table className="table">
             <thead>
               <tr>
@@ -373,8 +340,8 @@ return (
                       if (selectedSales.length === sales.length) {
                         setSelectedSales([]);
                       } else {
-                        const allLeadIds = sales.map((sale) => sale.id);
-                        setSelectedSales(allLeadIds);
+                        const allSaleIds = sales.map((sale) => sale.id);
+                        setSelectedSales(allSaleIds);
                       }
                     }}
                   />
@@ -410,8 +377,8 @@ return (
                     </td>
                     <td>{sale.id}</td>
                     <td>{sale.name}</td>
-                    <td>{sale.customer_id}</td>
-                    <td>{sale.opportunity_id}</td>
+                    <td>{sale.customer.id}</td>
+                    <td>{sale.opportunity.id}</td>
                     <td>{sale.date}</td>
                     <td>{sale.amount}</td>
                     <td>{sale.notes}</td>
@@ -424,5 +391,5 @@ return (
     </div>
   </div>
 );
-    }
+}
 
