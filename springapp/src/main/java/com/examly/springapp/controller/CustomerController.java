@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import com.examly.springapp.service.CustomerService;
 import com.examly.springapp.model.Customer;
 
 @RestController
-public class CustomerController {
+@CrossOrigin(origins = "https://8081-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io")
+public class CustomerController {                                           
 
     @Autowired
     CustomerService customerService;
@@ -34,12 +36,12 @@ public class CustomerController {
     }
 
     @PutMapping(value="/crm/customer/{id}")
-    public String updateCustomer(@PathVariable("id")Long customerId,@RequestBody Customer UpdatedCustomer){
-        return customerService.updateCustomer(customerId,UpdatedCustomer);
+    public String updateCustomer(@PathVariable("id")Long customerId,@RequestBody Customer updatedCustomer){
+        return customerService.updateCustomer(customerId,updatedCustomer);
     }
 
     @DeleteMapping(value="/crm/customer/{id}")
-    public String deleteCustomerById(@PathVariable("id") Long customerId){
+    public String deleteCustomerById(@PathVariable("id") Long customerId) throws Exception{
         return customerService.deleteCustomerById(customerId);
     }
 } 

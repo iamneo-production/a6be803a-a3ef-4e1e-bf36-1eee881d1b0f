@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.examly.springapp.model.Customer;
 import com.examly.springapp.repository.CustomerRepository;
+import com.examly.springapp.exception.ChildClassDeleteException;
 
 @Service
 public class CustomerService {
@@ -48,8 +49,12 @@ public class CustomerService {
         return "Customer Updated Successfully";
     }
 
-    public String deleteCustomerById(Long customerId) {
-        customerRepository.deleteById(customerId);
-        return "Customer Deleted Successfully";
+    public String deleteCustomerById(Long customerId) throws Exception {
+        try{
+            customerRepository.deleteById(customerId);
+            return "Customer Deleted Successfully";
+        }catch(Exception e){
+            throw new ChildClassDeleteException("Denied for Deletion");
+        }
     }
 }
