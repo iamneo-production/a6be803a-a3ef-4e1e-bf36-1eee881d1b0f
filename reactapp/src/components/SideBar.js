@@ -17,6 +17,10 @@ import {
   FacebookIcon,
  
 } from 'react-share';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1523effdec71208dce6000a61f61e428becd6311
 
 const routes=[{
   path:"/",
@@ -162,8 +166,9 @@ const SideBar = ({ children }) => {
         </motion.div>)}
         </AnimatePresence>
         </motion.div>
-
+        
         <main>{children}</main>
+      
       </div>
     </>
   );
