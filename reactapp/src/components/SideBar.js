@@ -17,10 +17,6 @@ import {
   FacebookIcon,
  
 } from 'react-share';
-<<<<<<< HEAD
-=======
-
->>>>>>> 1523effdec71208dce6000a61f61e428becd6311
 
 const routes=[{
   path:"/",
@@ -37,9 +33,6 @@ const routes=[{
   },{
     path:"/sales",
   name:"Sales",icon:<CiBadgeDollar/>,
-  },{
-    path:"/statistics",
-  name:"Analytics",icon:<IoMdAnalytics/>,
   },{
     path:"/tasks",
   name:"Tasks",icon:<BiTask/>,

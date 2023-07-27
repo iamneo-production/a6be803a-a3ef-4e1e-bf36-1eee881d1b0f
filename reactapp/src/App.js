@@ -1,7 +1,6 @@
 
 import './App.css';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
-import Home from './pages/Home/Home';
 import Customers from './pages/Customers/Customers';
 import Sales from './pages/Sales/Sales';
 import Analytics from './pages/Analytics/Analytics';
@@ -21,10 +20,9 @@ function App() {
    <Router>
     <SideBar>
     <Routes>
-      <Route path="/" element={<Home/>}/> 
+      <Route path="/" element={<Analytics/>}/> 
       <Route path="/customers" element={<Customers/>}/>
       <Route path="/sales" element={<Sales/>}/>
-      <Route path="/statistics" element={<Analytics/>}/>
       <Route path="/tasks" element={<Tasks/>}/>
       <Route path="/tickets" element={<Tickets/>}/>
       <Route path="/emails" element={<Emails/>}/>

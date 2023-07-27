@@ -428,6 +428,7 @@ export default function Opportunities() {
                 </div>
               )}
             </div>
+            <div style={{overflowY: 'scroll', maxHeight:'500px'}}>
             <table className="table">
               <thead>
                 <tr>
@@ -485,6 +486,7 @@ export default function Opportunities() {
                   ))}
               </tbody>
             </table>
+            </div>
           
       {showCustomerForm && (
         <div className="overlay">

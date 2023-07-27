@@ -313,6 +313,7 @@ export default function LeadPage() {
                 </div>
               )}
             </div>
+            <div style={{overflowY: 'scroll', maxHeight:'500px'}}>
             <table className="table">
               <thead>
                 <tr>
@@ -370,6 +371,7 @@ export default function LeadPage() {
                   ))}
               </tbody>
             </table>
+            </div>
           </div>
         )}
       </div>

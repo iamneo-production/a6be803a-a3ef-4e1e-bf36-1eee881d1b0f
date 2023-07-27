@@ -337,6 +337,7 @@ export default function Customer() {
                 </div>
               )}
             </div>
+            <div style={{overflowY: 'scroll', maxHeight:'500px'}}>
             <table className="table">
               <thead>
                 <tr>
@@ -391,6 +392,7 @@ export default function Customer() {
                   ))}
               </tbody>
             </table>
+            </div>
           </div>
         )}
       </div>

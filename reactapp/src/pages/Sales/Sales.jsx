@@ -328,7 +328,7 @@ return (
               </div>
             )}
           </div>
-          {console.log(selectedSales)}
+          <div style={{overflowY: 'scroll', maxHeight:'500px'}}>
           <table className="table">
             <thead>
               <tr>
@@ -386,6 +386,7 @@ return (
                 ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
     </div>
