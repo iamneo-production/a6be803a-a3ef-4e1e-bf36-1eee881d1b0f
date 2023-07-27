@@ -1,6 +1,7 @@
 package com.examly.springapp.repository;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import com.examly.springapp.enumeration.UserRoles;
@@ -13,5 +14,7 @@ public interface UserRepository extends JpaRepository<User,Long>{
     List<User> findByRolesIn(UserRoles[] role);
 
     User findOneByEmailIgnoreCaseAndPassword(String email, String password);
+
+    Optional<User> findByEmail(String email);
     
 }
