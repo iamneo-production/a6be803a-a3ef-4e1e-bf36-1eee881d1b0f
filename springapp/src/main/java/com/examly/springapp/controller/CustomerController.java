@@ -1,5 +1,4 @@
 package com.examly.springapp.controller;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -9,39 +8,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import com.examly.springapp.service.CustomerService;
 import com.examly.springapp.model.Customer;
-
+import com.examly.springapp.service.CustomerService;
 @RestController
-@CrossOrigin(origins = "https://8081-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io")
-public class CustomerController {                                           
-
+public class CustomerController {
     @Autowired
     CustomerService customerService;
-
-    @GetMapping(value="/crm/customer")
+    @GetMapping(value="/customer")
     public List<Customer> getCustomer(){
         return customerService.getCustomer();
     }
-
-    @GetMapping(value="/crm/customer/{id}")
+    @GetMapping(value="/customer/{id}")
     public Customer getCustomerById(@PathVariable("id")Long customerId){
         return customerService.getCustomerById(customerId);
     }
-
-    @PostMapping(value="/crm/customer")
-    public Customer addCustomer(@RequestBody Customer newCustomer){
+    @PostMapping(value="/customer")
+    public boolean addCustomer(@RequestBody Customer newCustomer){
         return customerService.addCustomer(newCustomer);
     }
-
-    @PutMapping(value="/crm/customer/{id}")
-    public String updateCustomer(@PathVariable("id")Long customerId,@RequestBody Customer updatedCustomer){
-        return customerService.updateCustomer(customerId,updatedCustomer);
+    @PutMapping(value="/customer/{id}")
+    public Customer updateCustomer(@PathVariable("id")Long customerId,@RequestBody Customer UpdatedCustomer){
+        return customerService.updateCustomer(customerId,UpdatedCustomer);
     }
-
-    @DeleteMapping(value="/crm/customer/{id}")
-    public String deleteCustomerById(@PathVariable("id") Long customerId) throws Exception{
+    @DeleteMapping(value="/customer/{id}")
+    public String deleteCustomerById(@PathVariable("id") Long customerId){
         return customerService.deleteCustomerById(customerId);
     }
-} 
+}
