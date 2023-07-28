@@ -33,6 +33,10 @@ export default function Tickets() {
     getAllTickets();
   }, []);
 
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
   useEffect(()=>{
     if(create){
         createTicket()
@@ -134,7 +138,7 @@ export default function Tickets() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if(formData.assignedTo.id===''){
+    if(formData.assignedTo!==null&&formData.assignedTo.id===''){
         setFormData({...formData, assignedTo:null})
     }
     if (selectedTickets.length === 1) {
@@ -169,7 +173,7 @@ export default function Tickets() {
   const handleEditSelected = () => {
     if (selectedTickets.length === 1) {
       setCreateMode(true);
-      const selectedTask = tickets.find((task) => task.id === selectedTickets[0]);
+      const selectedTask = tickets.find((ticket) => ticket.id === selectedTickets[0]);
       setFormData(selectedTask);
     }
   };
@@ -192,6 +196,8 @@ export default function Tickets() {
   const handleViewSelected = () => {
     if (selectedTickets.length === 1) {
       const selectedTask = tickets.find((task) => task.id === selectedTickets[0]);
+      console.log("selectedTask")
+      console.log(selectedTask)
       setViewTickets(selectedTask);
     }
   };
@@ -220,18 +226,6 @@ export default function Tickets() {
               Back
             </button>
             <form onSubmit={handleFormSubmit}>
-              <div className="form-group">
-                <label htmlFor="id">ID</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="id"
-                  name="id"
-                  value={formData.id}
-                  onChange={handleFormChange}
-                  disabled={true}
-                />
-              </div>
               <div className="form-group">
                 <label htmlFor="customer">Customer ID</label>
                 <input
@@ -322,12 +316,12 @@ export default function Tickets() {
                 </p>
                 <p>Name: {viewTickets.subject}</p>
                 <p>Desc: {viewTickets.description}</p>
-                Assigned to:{formData.assignedTo!==null?
+                Assigned to:{viewTickets.assignedTo==null?<p>N/A</p>:
                 <p style={{border: '2px solid grey', borderRadius:'10px', padding: '10px',margin:'15px'}}> 
                     <p>ID: {viewTickets.assignedTo.id}</p>
                     <p>Name: {viewTickets.assignedTo.name}</p>
                     <p>Email ID: {viewTickets.assignedTo.email}</p>
-                </p>:<p>N/A</p>}
+                </p>}
                 <p>Created At: {format(new Date(viewTickets.createdAt),'dd-MM-yyyy')}</p>
                 <p>Updated At: {format(new Date(viewTickets.updatedAt),'dd-MM-yyyy')}</p>
               </div>
