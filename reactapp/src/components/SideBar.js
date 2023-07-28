@@ -18,7 +18,6 @@ import {
  
 } from 'react-share';
 
-
 const routes=[{
   path:"/",
   name:"Home",icon:<FaHome/>,
@@ -34,9 +33,6 @@ const routes=[{
   },{
     path:"/sales",
   name:"Sales",icon:<CiBadgeDollar/>,
-  },{
-    path:"/statistics",
-  name:"Analytics",icon:<IoMdAnalytics/>,
   },{
     path:"/tasks",
   name:"Tasks",icon:<BiTask/>,

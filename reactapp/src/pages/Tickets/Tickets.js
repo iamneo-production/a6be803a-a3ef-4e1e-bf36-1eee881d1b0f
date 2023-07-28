@@ -362,6 +362,7 @@ export default function Tickets() {
                 </div>
               )}
             </div>
+            <div style={{overflowY: 'scroll', maxHeight:'500px'}}>
             <table className="table">
               <thead>
                 <tr>
@@ -421,6 +422,7 @@ export default function Tickets() {
                   ))}
               </tbody>
             </table>
+            </div>
           </div>
         )}
       </div>
