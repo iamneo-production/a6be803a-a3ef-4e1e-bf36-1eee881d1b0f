@@ -27,6 +27,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 			<id>1687347714287</id>
 =======
 <<<<<<< HEAD
@@ -92,10 +93,14 @@
 >>>>>>> a08468b919d80bdf67ed42a45fbb47a2d4697c97
 >>>>>>> 7a19241b96d16dcafd13699c1e7936c34ba97a6d
 >>>>>>> e6b7f3cd7ba72de98e4ca9370385180520a21e40
+=======
+			<id>1690568002988</id>
+>>>>>>> 735a8060af722c5b03ae85aa94f5b7a1fe682822
 			<name></name>
 			<type>30</type>
 			<matcher>
 				<id>org.eclipse.core.resources.regexFilterMatcher</id>
+<<<<<<< HEAD
 <<<<<<< HEAD
 				<arguments>node_modules|.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
 =======
@@ -105,6 +110,9 @@
 				<arguments>node_modules|\.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
 >>>>>>> 51b4eb4598bbd70b865bb7e52e279cbefa6efe2a
 >>>>>>> 98e7856e7f431ab0e2bbc297551c7ca87c42fa55
+=======
+				<arguments>node_modules|\.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
+>>>>>>> 735a8060af722c5b03ae85aa94f5b7a1fe682822
 			</matcher>
 		</filter>
 	</filteredResources>
