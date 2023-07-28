@@ -16,7 +16,7 @@ const SalesAnalytics = () => {
 
     const fetchSalesAnalytics = async () => {
         try {
-            const response = await axios.get('https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/analytics/totalSalesPerMonth');
+            const response = await axios.get('https://8080-debfdaaaddbcaefeedabbcfeaeaadbdbabf.project.examly.io/analytics/totalSalesPerMonth');
             setSalesData(response.data);
         } catch (error) {
             console.error('Error fetching sales analytics:', error);

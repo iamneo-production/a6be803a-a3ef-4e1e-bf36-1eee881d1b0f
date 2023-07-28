@@ -13,7 +13,7 @@ const EmailAndSmsAnalytics = () => {
 
     const fetchEmailCount = async () => {
         try {
-            const response = await axios.get('https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/analytics/emailCount');
+            const response = await axios.get('https://8080-debfdaaaddbcaefeedabbcfeaeaadbdbabf.project.examly.io/analytics/emailCount');
             setEmailCount(response.data);
         } catch (error) {
             console.error(error);

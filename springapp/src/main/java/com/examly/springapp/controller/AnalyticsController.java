@@ -10,7 +10,7 @@ import com.examly.springapp.service.AnalyticsService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
-@CrossOrigin(origins = "https://8081-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io")
+@CrossOrigin(origins = "https://8081-debfdaaaddbcaefeedabbcfeaeaadbdbabf.project.examly.io")
 public class AnalyticsController {
 
     @Autowired

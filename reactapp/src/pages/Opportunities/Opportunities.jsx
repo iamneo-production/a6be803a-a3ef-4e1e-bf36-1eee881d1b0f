@@ -7,8 +7,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Opportunities.css';
 
-const OPPORTUNITY_BASE_REST_API_URL = "https://8080-dafeecadcdaefeedabbcfeaeaadbdbabf.project.examly.io/crm/opportunity";
-const CUSTOMER_BASE_REST_API_URL = "https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/customer";
+const OPPORTUNITY_BASE_REST_API_URL = "https://8080-debfdaaaddbcaefeedabbcfeaeaadbdbabf.project.examly.io/crm/opportunity";
+const CUSTOMER_BASE_REST_API_URL = "https://8080-debfdaaaddbcaefeedabbcfeaeaadbdbabf.project.examly.io/crm/customer";
 
 export default function Opportunities() {
   const [opportunities, setOpportunities] = useState([]);
