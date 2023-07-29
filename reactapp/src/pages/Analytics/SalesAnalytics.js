@@ -25,7 +25,7 @@ const SalesAnalytics = () => {
 
     const fetchSalesThisMonth = async () => {
         try {
-            const response = await axios.get('https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/analytics/salesThisMonth');
+            const response = await axios.get('https://8080-debfdaaaddbcaefeedabbcfeaeaadbdbabf.project.examly.io/analytics/salesThisMonth');
             setSalesThisMonth(response.data);
         } catch (error) {
             console.error(error);
