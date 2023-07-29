@@ -224,18 +224,6 @@ export default function Tasks() {
             </button>
             <form onSubmit={handleFormSubmit}>
               <div className="form-group">
-                <label htmlFor="id">ID</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="id"
-                  name="id"
-                  value={formData.id}
-                  onChange={handleFormChange}
-                  disabled={true}
-                />
-              </div>
-              <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
                   type="text"

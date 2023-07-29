@@ -227,6 +227,7 @@ return (
                 name="customer_id"
                 value={formData.customer.id}
                 onChange={handleFormChange}
+                required
               />
             </div>
            
@@ -239,6 +240,7 @@ return (
                 name="opportunity_id"
                 value={formData.opportunity.id}
                 onChange={handleFormChange}
+                required
               />
             </div>
             <div className="form-group">
@@ -317,10 +319,10 @@ return (
                     <button className="dropdown-item" onClick={handleDeleteSelected}>
                       Delete
                     </button>
-                    {selectedSales===1&&<button className="dropdown-item" onClick={handleEditSelected}>
+                    {selectedSales.length===1&&<button className="dropdown-item" onClick={handleEditSelected}>
                       Edit
                     </button>}
-                    {selectedSales===1&&<button className="dropdown-item" onClick={handleViewSelected}>
+                    {selectedSales.length===1&&<button className="dropdown-item" onClick={handleViewSelected}>
                         View
                       </button>}
                   </div>

@@ -239,7 +239,6 @@
   .view-scroll {
     width:450px;
     height: 650px; /*fixed height for the scrollable area*/
-    overflow-y: auto; /* Enabled vertical scrolling */
   }
   
   

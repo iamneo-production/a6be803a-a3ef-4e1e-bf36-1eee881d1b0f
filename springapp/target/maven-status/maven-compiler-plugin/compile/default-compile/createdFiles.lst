@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 com/examly/springapp/DTO/SignUpDTO.class
+=======
+>>>>>>> 5c0006b9ec96ad8f44c859f17bb14343daaf6817
 com/examly/springapp/repository/OpportunityRepository.class
 com/examly/springapp/service/AnalyticsService.class
 com/examly/springapp/repository/SaleRepository.class
@@ -9,6 +12,7 @@ com/examly/springapp/repository/TicketRepository.class
 com/examly/springapp/controller/CustomerController.class
 com/examly/springapp/enumeration/TicketStatus.class
 com/examly/springapp/DTO/OpportunityAnalyticsDTO.class
+com/examly/springapp/controller/InputStreamDataSource.class
 com/examly/springapp/model/User.class
 com/examly/springapp/enumeration/LeadStatus.class
 com/examly/springapp/controller/AnalyticsController.class
@@ -43,7 +47,6 @@ com/examly/springapp/repository/TaskRepository.class
 com/examly/springapp/repository/UserRepository.class
 com/examly/springapp/sms/WebSocketConfig.class
 com/examly/springapp/repository/CustomerRepository.class
-com/examly/springapp/sms/SmsPojo.class
 com/examly/springapp/model/Lead.class
 com/examly/springapp/enumeration/OpportunityStatus.class
 com/examly/springapp/enumeration/UserRoles.class
