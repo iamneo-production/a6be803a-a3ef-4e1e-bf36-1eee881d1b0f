@@ -14,10 +14,8 @@ import com.examly.springapp.DTO.LoginDTO;
 import com.examly.springapp.enumeration.UserRoles;
 import com.examly.springapp.model.User;
 import com.examly.springapp.service.UserService;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
     @Autowired

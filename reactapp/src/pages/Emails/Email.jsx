@@ -34,7 +34,7 @@ const Email = () => {
     }
 
     axios
-      .post('http://localhost:8080/crm/send', formData)
+      .post('https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/crm/send', formData)
       .then((response) => {
         console.log(response.data); // Handle the response from the backend
       })
