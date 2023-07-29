@@ -7,8 +7,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { useNavigate} from 'react-router-dom';
 
 
-const CUSTOMER_URL = 'https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/customer';
-const SMS_URL='https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/sms';
+const CUSTOMER_URL = 'https://8081-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io/crm/customer';
+const SMS_URL='https://8081-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io/crm/sms';
 export default function Customer() {
   const [customers, setCustomers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
