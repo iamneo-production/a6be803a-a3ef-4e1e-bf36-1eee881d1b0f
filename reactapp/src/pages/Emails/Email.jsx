@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import autosize from 'autosize';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Email = () => {
   const [subject, setSubject] = useState('');
   const [body, setBody] = useState('');
   const [attachments, setAttachments] = useState([]);
+  const [isEmailSent, setIsEmailSent] = useState(false);
   const textareaRef = useRef(null);
 
   const handleSubjectChange = (e) => {
@@ -31,18 +34,29 @@ const Email = () => {
     }
 
     axios
-      .post('https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/crm/send', formData)
+      .post('http://localhost:8080/crm/send', formData)
       .then((response) => {
         console.log(response.data); // Handle the response from the backend
       })
       .catch((error) => {
         console.error('Error:', error);
       });
+
+    setIsEmailSent(true);
+    notifyEmailSent();
   };
 
   useEffect(() => {
     autosize(textareaRef.current); // Initialize autosize library on textarea
   }, []);
+
+  const notifyEmailSent = () => {
+    toast.success('Email sent successfully!', {
+      position: 'bottom-right',
+      autoClose: 3000, // Notification will automatically close after 3 seconds
+      hideProgressBar: true,
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -84,6 +98,8 @@ const Email = () => {
       </div>
 
       <button type="submit" className="btn btn-primary">Send Email</button>
+      {isEmailSent}
+      <ToastContainer />
     </form>
   );
 };
