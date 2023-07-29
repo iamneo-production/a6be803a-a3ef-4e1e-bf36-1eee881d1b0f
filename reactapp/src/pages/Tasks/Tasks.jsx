@@ -353,6 +353,7 @@ export default function Tasks() {
                 </div>
               )}
             </div>
+            <div style={{overflowY: 'scroll', maxHeight:'500px'}}>
             <table className="table">
               <thead>
                 <tr>
@@ -407,6 +408,7 @@ export default function Tasks() {
                   ))}
               </tbody>
             </table>
+            </div>
           </div>
         ))}
       </div>

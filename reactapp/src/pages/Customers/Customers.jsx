@@ -8,7 +8,7 @@ import { useNavigate} from 'react-router-dom';
 
 
 const CUSTOMER_URL = 'https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/customer';
-const SMS_URL='https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/sms';
+const SMS_URL='https://https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io//crm/sms';
 export default function Customer() {
   const [customers, setCustomers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -337,6 +337,7 @@ export default function Customer() {
                 </div>
               )}
             </div>
+            <div style={{overflowY: 'scroll', maxHeight:'500px'}}>
             <table className="table">
               <thead>
                 <tr>
@@ -391,6 +392,7 @@ export default function Customer() {
                   ))}
               </tbody>
             </table>
+            </div>
           </div>
         )}
       </div>
