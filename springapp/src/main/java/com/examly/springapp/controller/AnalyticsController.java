@@ -4,11 +4,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import com.examly.springapp.DTO.OpportunityAnalyticsDTO;
 import com.examly.springapp.DTO.TicketAnalyticsDTO;
 import com.examly.springapp.service.AnalyticsService;
 
 @RestController
+@CrossOrigin(origins="https://8081-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/")
 public class AnalyticsController {
 
     @Autowired

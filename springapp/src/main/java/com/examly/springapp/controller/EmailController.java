@@ -3,6 +3,7 @@ package com.examly.springapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import com.examly.springapp.model.Customer;
 import com.examly.springapp.repository.CustomerRepository;
 import javax.activation.DataHandler;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Properties;
 
 @RestController
+@CrossOrigin(origins="https://8081-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/")
 public class EmailController {
 
     @Autowired

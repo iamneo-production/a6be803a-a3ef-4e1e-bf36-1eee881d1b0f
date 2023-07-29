@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import com.examly.springapp.DTO.LoginDTO;
 import com.examly.springapp.enumeration.UserRoles;
 import com.examly.springapp.model.User;
 import com.examly.springapp.service.UserService;
 
 @RestController
+@CrossOrigin(origins="https://8081-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/")
 public class UserController {
 
     @Autowired

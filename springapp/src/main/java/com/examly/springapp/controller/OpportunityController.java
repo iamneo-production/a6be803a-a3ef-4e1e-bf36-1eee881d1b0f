@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import com.examly.springapp.model.Opportunity;
 import com.examly.springapp.service.OpportunityService;
 
 @RestController
+@CrossOrigin(origins="https://8081-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/")
 public class OpportunityController {
 
     @Autowired

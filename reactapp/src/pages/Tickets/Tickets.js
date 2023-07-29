@@ -6,7 +6,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import '../Tasks/Tasks.css';
 import { format } from 'date-fns';
 
-const TICKETS_BASE_REST_API_URL = 'https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/crm/ticket';
+const TICKETS_BASE_REST_API_URL = 'https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/ticket';
 
 export default function Tickets() {
   const [tickets, setTickets] = useState([]);
