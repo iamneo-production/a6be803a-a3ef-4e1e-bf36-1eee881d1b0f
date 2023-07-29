@@ -13,7 +13,6 @@ import com.examly.springapp.model.Opportunity;
 import com.examly.springapp.service.OpportunityService;
 
 @RestController
-@CrossOrigin(origins = "https://8081-debfdaaaddbcaefeedabbcfeaeaadbdbabf.project.examly.io")
 public class OpportunityController {
 
     @Autowired

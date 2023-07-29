@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-com/examly/springapp/DTO/SignUpDTO.class
-=======
->>>>>>> 5c0006b9ec96ad8f44c859f17bb14343daaf6817
 com/examly/springapp/repository/OpportunityRepository.class
 com/examly/springapp/service/AnalyticsService.class
 com/examly/springapp/repository/SaleRepository.class

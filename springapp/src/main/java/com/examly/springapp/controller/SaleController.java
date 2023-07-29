@@ -13,7 +13,6 @@ import com.examly.springapp.model.Sale;
 import com.examly.springapp.service.SaleService;
 
 @RestController
-@CrossOrigin(origins = "https://8081-debfdaaaddbcaefeedabbcfeaeaadbdbabf.project.examly.io")
 public class SaleController {
 
     @Autowired

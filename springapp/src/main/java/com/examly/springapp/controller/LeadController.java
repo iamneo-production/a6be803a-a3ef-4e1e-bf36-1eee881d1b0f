@@ -13,7 +13,6 @@ import com.examly.springapp.model.Lead;
 import com.examly.springapp.service.LeadService;
 
 @RestController
-@CrossOrigin(origins = "https://8081-debfdaaaddbcaefeedabbcfeaeaadbdbabf.project.examly.io")
 public class LeadController {
     
     @Autowired

@@ -9,7 +9,6 @@ import com.examly.springapp.DTO.TicketAnalyticsDTO;
 import com.examly.springapp.service.AnalyticsService;
 
 @RestController
-@CrossOrigin(origins = "https://8081-debfdaaaddbcaefeedabbcfeaeaadbdbabf.project.examly.io")
 public class AnalyticsController {
 
     @Autowired
