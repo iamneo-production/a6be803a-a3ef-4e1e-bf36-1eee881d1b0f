@@ -10,6 +10,13 @@ import{BiSolidUserCircle} from'react-icons/bi'
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {MdEmail} from 'react-icons/md'
+import {
+  FacebookShareButton,
+  LinkedinShareButton,
+  LinkedinIcon,
+  FacebookIcon,
+ 
+} from 'react-share';
 
 const routes=[{
   path:"/",
@@ -27,9 +34,6 @@ const routes=[{
     path:"/sales",
   name:"Sales",icon:<CiBadgeDollar/>,
   },{
-    path:"/statistics",
-  name:"Analytics",icon:<IoMdAnalytics/>,
-  },{
     path:"/tasks",
   name:"Tasks",icon:<BiTask/>,
   },{
@@ -45,22 +49,7 @@ const routes=[{
 const SideBar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
-  const inputAnimation = {
-    hidden: {
-      width: 0,
-      padding: 0,
-      transition: {
-        duration: 0.2,
-      },
-    },
-    show: {
-      width: "140px",
-      padding: "5px 15px",
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
+
 
   const showAnimation = {
     hidden: {
@@ -87,6 +76,7 @@ const SideBar = ({ children }) => {
             width: isOpen ? "220px" : "45px",
             transition: {
               duration: 0.5,
+              type: "spring",
               damping: 10,
             },
           }}
@@ -136,9 +126,28 @@ const SideBar = ({ children }) => {
               
             ))}
           </section>
+          <AnimatePresence>
+        {isOpen && (<motion.div className="social" variants={showAnimation}
+                        initial="hidden"
+                        animate="show"
+                        exit="hidden">
+          <FacebookShareButton
+            url="#"
+            quote={"Hey"}
+            hashtag="#React"
+          >
+            <FacebookIcon logoFillColor="white" round={true} />
+          </FacebookShareButton>
+          <LinkedinShareButton  url="#"
+            quote={"Hey"} >
+          <LinkedinIcon logoFillColor="white" round={true}></LinkedinIcon>
+          </LinkedinShareButton>
+        </motion.div>)}
+        </AnimatePresence>
         </motion.div>
-
+        
         <main>{children}</main>
+      
       </div>
     </>
   );

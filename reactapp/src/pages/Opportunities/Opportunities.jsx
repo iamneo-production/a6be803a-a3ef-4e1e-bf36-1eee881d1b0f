@@ -7,7 +7,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Opportunities.css';
 
-const OPPORTUNITY_BASE_REST_API_URL = "https://8080-dafeecadcdaefeedabbcfeaeaadbdbabf.project.examly.io/crm/opportunity";
+const OPPORTUNITY_BASE_REST_API_URL = "https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/opportunity";
 const CUSTOMER_BASE_REST_API_URL = "https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/crm/customer";
 
 export default function Opportunities() {
@@ -29,11 +29,16 @@ export default function Opportunities() {
   const [showCustomerForm, setShowCustomerForm] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [selectedCustomerDetails, setSelectedCustomerDetails] = useState(null);
+  const [customerSearchQuery, setCustomerSearchQuery] = useState('');
+  const [filteredCustomerOptions, setFilteredCustomerOptions] = useState([]);
+
+
 
 
   useEffect(() => {
     getAllOpportunities();
     getAllCustomers();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);  
   
   useEffect(() => {
@@ -51,6 +56,45 @@ export default function Opportunities() {
     } catch (error) {
       console.log('Error retrieving customers:', error);
     }
+  };
+
+  useEffect(() => {
+    const filteredOptions = customerOptions.filter((customer) =>
+      customer.name.toLowerCase().includes(customerSearchQuery.toLowerCase())
+    );
+    setFilteredCustomerOptions(filteredOptions);
+  }, [customerSearchQuery, customerOptions]);
+
+  const handleCustomerSearchChange = (e) => {
+    const { value } = e.target;
+    setCustomerSearchQuery(value);
+
+    // Check if the value exactly matches any existing customer name
+    const exactMatchCustomer = customerOptions.find(
+      (customer) => customer.name.toLowerCase() === value.toLowerCase()
+    );
+
+    if (exactMatchCustomer) {
+      // If an exact match is found, update the formData with the customer ID and name
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        customer: exactMatchCustomer.id.toString(),
+      }));
+    } else {
+      // If no exact match is found, clear the customer ID in formData
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        customer: '',
+      }));
+    }
+  };
+
+  const handleCustomerOptionClick = (customer) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      customer: customer.id.toString(),
+    }));
+    setCustomerSearchQuery('');
   };
 
   const getAllOpportunities = async () => {
@@ -275,22 +319,11 @@ export default function Opportunities() {
         </div>
         {createMode ? (
           <div>
+            <div className="form-container">
             <button className="btn btn-primary mb-3" onClick={handleBackClick}>
               Back
             </button>
             <form onSubmit={handleFormSubmit}>
-              <div className="form-group">
-                <label htmlFor="id">ID</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="id"
-                  name="id"
-                  value={formData.id}
-                  onChange={handleFormChange}
-                  disabled
-                />
-              </div>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
@@ -300,6 +333,7 @@ export default function Opportunities() {
                   name="name"
                   value={formData.name}
                   onChange={handleFormChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -311,7 +345,18 @@ export default function Opportunities() {
                   name="customer"
                   value={formData.customer || ''}
                   onChange={handleFormChange}
-                />
+                  onInput={handleCustomerSearchChange}
+                  required
+                  />
+                  {filteredCustomerOptions.length > 0 && (
+                    <ul className="customer-options">
+                      {filteredCustomerOptions.map((customer) => (
+                        <li key={customer.id} onClick={() => handleCustomerOptionClick(customer)}>
+                          {customer.name}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
               </div>
               <div className="form-group">
                 <label htmlFor="status">Status</label>
@@ -321,6 +366,7 @@ export default function Opportunities() {
                   name="status"
                   value={formData.status}
                   onChange={handleFormChange}
+                  required
                 >
                   <option value="">-- Select Status --</option>
                   <option value="OPEN">OPEN</option>
@@ -341,6 +387,7 @@ export default function Opportunities() {
                   name="value"
                   value={formData.value}
                   onChange={handleFormChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -371,7 +418,8 @@ export default function Opportunities() {
               </button>
             </form>
           </div>
-         ) : viewOpportunity ? (
+          </div>
+          ) : viewOpportunity ? (
           
             <div className="view-overlay">
               <div className="view-content">
@@ -383,20 +431,23 @@ export default function Opportunities() {
                   <p>ID: {viewOpportunity.id}</p>
                   <p>Name: {viewOpportunity.name}</p>
                   <p>Customer ID: {viewOpportunity.customer && viewOpportunity.customer.id ? viewOpportunity.customer.id : 'N/A'}</p>
-                  {viewOpportunity.customer && viewOpportunity.customer.id && (
-                  <>
+                  
+                  {viewOpportunity.customer && viewOpportunity.customer.id !== 'N/A' && (
+                  
+                  <div className="customer-box">
                   <p className="customer-details-label">Customer Name: {viewOpportunity.customer.name}</p>
                   <p className="customer-details-label">Customer Email: {viewOpportunity.customer.email}</p>
                   <p className="customer-details-label">Customer Phone: {viewOpportunity.customer.phone}</p>
                   <p className="customer-details-label">Customer Address: {viewOpportunity.customer.address}</p>
-                  </>
+                  </div>
                   )}
+                  </div>
                   <p>Status: {viewOpportunity.status}</p>
                   <p>Close Date: {viewOpportunity.closeDate ? new Date(viewOpportunity.closeDate).toLocaleDateString('en-US') : 'N/A'}</p>
                   <p>Notes: {viewOpportunity.notes}</p>  
                 </div>
               </div>
-            </div>
+            
           ) : (
           
           
@@ -428,6 +479,8 @@ export default function Opportunities() {
                 </div>
               )}
             </div>
+            <div style={{overflowY: 'scroll', maxHeight:'500px'}}>
+            
             <table className="table">
               <thead>
                 <tr>
@@ -485,6 +538,7 @@ export default function Opportunities() {
                   ))}
               </tbody>
             </table>
+            </div>
           
       {showCustomerForm && (
         <div className="overlay">

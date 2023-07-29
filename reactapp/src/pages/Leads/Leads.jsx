@@ -7,7 +7,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
 
-const LEAD_BASE_REST_API_URL = 'https://8080-debfdaaaddbcaefeedabbcfeaeaadbdbabf.project.examly.io/crm/lead';
+const LEAD_BASE_REST_API_URL = 'https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io//crm/lead';
 
 export default function LeadPage() {
   const [leads, setLeads] = useState([]);
@@ -313,6 +313,7 @@ export default function LeadPage() {
                 </div>
               )}
             </div>
+            <div style={{overflowY: 'scroll', maxHeight:'500px'}}>
             <table className="table">
               <thead>
                 <tr>
@@ -370,6 +371,7 @@ export default function LeadPage() {
                   ))}
               </tbody>
             </table>
+            </div>
           </div>
         )}
       </div>

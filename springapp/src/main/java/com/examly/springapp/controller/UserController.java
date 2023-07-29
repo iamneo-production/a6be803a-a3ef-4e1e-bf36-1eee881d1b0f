@@ -2,22 +2,19 @@ package com.examly.springapp.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.examly.springapp.DTO.AuthenticationResponse;
 import com.examly.springapp.DTO.LoginDTO;
+import com.examly.springapp.DTO.SignUpDTO;
 import com.examly.springapp.enumeration.UserRoles;
 import com.examly.springapp.model.User;
 import com.examly.springapp.service.UserService;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "https://8081-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io")
+@RequiredArgsConstructor
+@ComponentScan
 public class UserController {
 
     @Autowired
@@ -39,18 +36,17 @@ public class UserController {
     public User getUser(@PathVariable("id")Long userId){
         return userService.getUserById(userId);
     }
-    
-    @PostMapping(value="/signUp")
-    public String signUpRequest(@RequestBody User user){
-        return userService.signUpRequest(user);
-    } 
 
-    @PostMapping(value="/login")
-    public String loginRequest(@RequestBody LoginDTO loginRequest){
-        return userService.loginRequest(loginRequest);
+    @PostMapping("/signUp")
+    public AuthenticationResponse register(@RequestBody SignUpDTO request){
+        return userService.register(request);
+
+    }
+    @PostMapping("/login")
+    public AuthenticationResponse authenticate(@RequestBody LoginDTO request){
+        return userService.authenticate(request);
     }
 
-    
     @PutMapping(value="/crm/user/{id}")
     public String updateUserById(@PathVariable("id") Long userId,@RequestBody User updatedUser){
         return userService.updateUserById(userId,updatedUser);
