@@ -14,4 +14,3 @@ public class TicketAnalyticsDTO {
     private long resolvedTickets;
     private long reopenedTickets;
 }
-    

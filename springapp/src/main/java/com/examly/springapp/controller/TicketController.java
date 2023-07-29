@@ -14,7 +14,7 @@ import com.examly.springapp.model.Ticket;
 import com.examly.springapp.service.TicketService;
 
 @RestController
-@CrossOrigin(origins = "https://8081-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io")
+@CrossOrigin(origins = "https://8081-daebdecafbdcafeefeedabbcfeaeaadbdbabf.project.examly.io/")
 public class TicketController {
 
     @Autowired
@@ -36,8 +36,8 @@ public class TicketController {
     }
     
     @PutMapping(value="/crm/ticket/{id}")
-    public String updateTicket(@PathVariable("id")Long ticketId,@RequestBody Ticket UpdatedTicket){
-        return ticketService.updateTicket(ticketId,UpdatedTicket);
+    public String updateTicket(@PathVariable("id")Long ticketId,@RequestBody Ticket updatedTicket){
+        return ticketService.updateTicket(ticketId,updatedTicket);
     }
 
     @DeleteMapping(value="/crm/ticket/{id}")

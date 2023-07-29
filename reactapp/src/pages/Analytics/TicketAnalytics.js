@@ -13,7 +13,7 @@ const TicketAnalytics = () => {
 
   const fetchTicketAnalytics = async () => {
     try {
-      const response = await axios.get('https://8080-fadbdaaeeabdaaefeedabbcfeaeaadbdbabf.project.examly.io/analytics/ticketStatus');
+      const response = await axios.get('https://8080-daebdecafbdcafeefeedabbcfeaeaadbdbabf.project.examly.io/analytics/ticketStatus');
       setTicketAnalytics(response.data);
     } catch (error) {
       console.error(error);

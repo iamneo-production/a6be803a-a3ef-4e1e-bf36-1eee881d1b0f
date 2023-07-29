@@ -17,7 +17,7 @@ import com.examly.springapp.service.UserService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://8081-daebdecafbdcafeefeedabbcfeaeaadbdbabf.project.examly.io/")
 public class UserController {
 
     @Autowired

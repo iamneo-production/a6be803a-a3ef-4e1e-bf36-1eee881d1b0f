@@ -6,4 +6,3 @@ public enum LeadStatus {
     QUALIFIED,
     DISQUALIFIED
 }
-
