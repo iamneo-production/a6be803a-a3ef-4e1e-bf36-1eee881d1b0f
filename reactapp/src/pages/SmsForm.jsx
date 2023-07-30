@@ -10,11 +10,7 @@ function SmsForm() {
   const [message, setMessage] = useState('');
   const [isSmsSent, setIsSmsSent] = useState(false);
   const sendSMS = () => {
-<<<<<<< HEAD
    axios.post(`https://8080-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io/crm/smsapi`, {
-=======
-   axios.post(`https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/crm/smsapi`, {
->>>>>>> 5c0006b9ec96ad8f44c859f17bb14343daaf6817
       
       message: message
     })

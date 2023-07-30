@@ -6,11 +6,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './Tasks.css';
 import { format } from 'date-fns';
 
-<<<<<<< HEAD
 const TASK_BASE_REST_API_URL = 'https://8080-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io/crm/task';
-=======
-const TASK_BASE_REST_API_URL = 'https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/crm/task';
->>>>>>> 5c0006b9ec96ad8f44c859f17bb14343daaf6817
 
 export default function Tasks() {
   const [tasks, setTasks] = useState([]);

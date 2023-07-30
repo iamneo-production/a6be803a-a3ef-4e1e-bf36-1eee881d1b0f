@@ -9,13 +9,8 @@ const Navbar = ({ name, searchQuery, onSearchChange }) => {
   const [todayTasks, setTodayTasks] = useState([]);
   const [todayTickets, setTodayTickets] = useState([]);
   const [tasks, setTasks]=useState(true);
-<<<<<<< HEAD
   const TICKET_BASE_REST_API_URL = 'https://8080-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io/crm/ticket';
   const TASK_BASE_REST_API_URL = 'https://8080-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io/crm/task';
-=======
-  const TICKET_BASE_REST_API_URL = 'https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/crm/ticket';
-  const TASK_BASE_REST_API_URL = 'https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/crm/task';
->>>>>>> 5c0006b9ec96ad8f44c859f17bb14343daaf6817
 
   useEffect(()=>{
     getAllTasks();
