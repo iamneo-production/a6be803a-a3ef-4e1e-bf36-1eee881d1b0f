@@ -14,7 +14,6 @@ import com.examly.springapp.model.Ticket;
 import com.examly.springapp.service.TicketService;
 
 @RestController
-@CrossOrigin(origins = "https://8081-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io")
 public class TicketController {
 
     @Autowired

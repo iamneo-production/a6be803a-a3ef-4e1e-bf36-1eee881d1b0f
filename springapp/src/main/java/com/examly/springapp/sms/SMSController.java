@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @RestController
-@CrossOrigin(origins = "https://8081-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io")
 public class SMSController {
 
     @Autowired
