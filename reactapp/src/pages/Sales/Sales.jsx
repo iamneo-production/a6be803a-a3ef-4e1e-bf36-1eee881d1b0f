@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import '../Tasks/Tasks.css'
 
-const SALES_URL="https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/crm/sale"
+const SALES_URL="https://8080-dafeecadcdaefeedabbcfeaeaadbdbabf.project.examly.io/crm/sale"
 
 export default function Sales() {
   const [sales, setSales] = useState([]);
