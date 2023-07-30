@@ -5,7 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import '../Tasks/Tasks.css'
 
+<<<<<<< HEAD
 const SALES_URL="https://8080-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io/crm/sale"
+=======
+const SALES_URL="https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/crm/sale"
+>>>>>>> 5c0006b9ec96ad8f44c859f17bb14343daaf6817
 
 export default function Sales() {
   const [sales, setSales] = useState([]);
@@ -227,6 +231,7 @@ return (
                 name="customer_id"
                 value={formData.customer.id}
                 onChange={handleFormChange}
+                required
               />
             </div>
            
@@ -239,6 +244,7 @@ return (
                 name="opportunity_id"
                 value={formData.opportunity.id}
                 onChange={handleFormChange}
+                required
               />
             </div>
             <div className="form-group">
@@ -317,10 +323,10 @@ return (
                     <button className="dropdown-item" onClick={handleDeleteSelected}>
                       Delete
                     </button>
-                    {selectedSales===1&&<button className="dropdown-item" onClick={handleEditSelected}>
+                    {selectedSales.length===1&&<button className="dropdown-item" onClick={handleEditSelected}>
                       Edit
                     </button>}
-                    {selectedSales===1&&<button className="dropdown-item" onClick={handleViewSelected}>
+                    {selectedSales.length===1&&<button className="dropdown-item" onClick={handleViewSelected}>
                         View
                       </button>}
                   </div>

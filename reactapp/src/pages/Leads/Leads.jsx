@@ -7,7 +7,11 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
 
+<<<<<<< HEAD
 const LEAD_BASE_REST_API_URL = 'https://8080-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io/crm/lead';
+=======
+const LEAD_BASE_REST_API_URL = 'https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/crm/lead';
+>>>>>>> 5c0006b9ec96ad8f44c859f17bb14343daaf6817
 
 export default function LeadPage() {
   const [leads, setLeads] = useState([]);
@@ -169,18 +173,6 @@ export default function LeadPage() {
             </button>
             <form onSubmit={handleFormSubmit}>
               {/* Lead form inputs */}
-              <div className="form-group">
-                <label htmlFor="id">ID</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="id"
-                  name="id"
-                  value={formData.id}
-                  onChange={handleFormChange}
-                  disabled
-                />
-              </div>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input

@@ -6,7 +6,11 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './Tasks.css';
 import { format } from 'date-fns';
 
+<<<<<<< HEAD
 const TASK_BASE_REST_API_URL = 'https://8080-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io/crm/task';
+=======
+const TASK_BASE_REST_API_URL = 'https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/crm/task';
+>>>>>>> 5c0006b9ec96ad8f44c859f17bb14343daaf6817
 
 export default function Tasks() {
   const [tasks, setTasks] = useState([]);
@@ -223,18 +227,6 @@ export default function Tasks() {
               Back
             </button>
             <form onSubmit={handleFormSubmit}>
-              <div className="form-group">
-                <label htmlFor="id">ID</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="id"
-                  name="id"
-                  value={formData.id}
-                  onChange={handleFormChange}
-                  disabled={true}
-                />
-              </div>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input

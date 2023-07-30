@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.examly.springapp.model.Opportunity;
 import com.examly.springapp.service.OpportunityService;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 public class OpportunityController {

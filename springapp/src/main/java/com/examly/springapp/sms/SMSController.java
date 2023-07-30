@@ -21,7 +21,7 @@ public class SMSController {
 
    @PostConstruct
     public void init() {
-        sms_count = 4;
+        sms_count = 0;
     }
 
     public int smsCount() {

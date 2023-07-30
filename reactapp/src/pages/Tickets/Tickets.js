@@ -6,7 +6,11 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import '../Tasks/Tasks.css';
 import { format } from 'date-fns';
 
+<<<<<<< HEAD
 const TICKETS_BASE_REST_API_URL = 'https://8080-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io/crm/ticket';
+=======
+const TICKETS_BASE_REST_API_URL = 'https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/crm/ticket';
+>>>>>>> 5c0006b9ec96ad8f44c859f17bb14343daaf6817
 
 export default function Tickets() {
   const [tickets, setTickets] = useState([]);
@@ -32,6 +36,10 @@ export default function Tickets() {
   useEffect(() => {
     getAllTickets();
   }, []);
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
 
   useEffect(()=>{
     if(create){
@@ -134,7 +142,7 @@ export default function Tickets() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if(formData.assignedTo.id===''){
+    if(formData.assignedTo!==null&&formData.assignedTo.id===''){
         setFormData({...formData, assignedTo:null})
     }
     if (selectedTickets.length === 1) {
@@ -169,7 +177,7 @@ export default function Tickets() {
   const handleEditSelected = () => {
     if (selectedTickets.length === 1) {
       setCreateMode(true);
-      const selectedTask = tickets.find((task) => task.id === selectedTickets[0]);
+      const selectedTask = tickets.find((ticket) => ticket.id === selectedTickets[0]);
       setFormData(selectedTask);
     }
   };
@@ -192,6 +200,8 @@ export default function Tickets() {
   const handleViewSelected = () => {
     if (selectedTickets.length === 1) {
       const selectedTask = tickets.find((task) => task.id === selectedTickets[0]);
+      console.log("selectedTask")
+      console.log(selectedTask)
       setViewTickets(selectedTask);
     }
   };
@@ -220,18 +230,6 @@ export default function Tickets() {
               Back
             </button>
             <form onSubmit={handleFormSubmit}>
-              <div className="form-group">
-                <label htmlFor="id">ID</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="id"
-                  name="id"
-                  value={formData.id}
-                  onChange={handleFormChange}
-                  disabled={true}
-                />
-              </div>
               <div className="form-group">
                 <label htmlFor="customer">Customer ID</label>
                 <input
@@ -322,12 +320,12 @@ export default function Tickets() {
                 </p>
                 <p>Name: {viewTickets.subject}</p>
                 <p>Desc: {viewTickets.description}</p>
-                Assigned to:{formData.assignedTo!==null?
+                Assigned to:{viewTickets.assignedTo==null?<p>N/A</p>:
                 <p style={{border: '2px solid grey', borderRadius:'10px', padding: '10px',margin:'15px'}}> 
                     <p>ID: {viewTickets.assignedTo.id}</p>
                     <p>Name: {viewTickets.assignedTo.name}</p>
                     <p>Email ID: {viewTickets.assignedTo.email}</p>
-                </p>:<p>N/A</p>}
+                </p>}
                 <p>Created At: {format(new Date(viewTickets.createdAt),'dd-MM-yyyy')}</p>
                 <p>Updated At: {format(new Date(viewTickets.updatedAt),'dd-MM-yyyy')}</p>
               </div>

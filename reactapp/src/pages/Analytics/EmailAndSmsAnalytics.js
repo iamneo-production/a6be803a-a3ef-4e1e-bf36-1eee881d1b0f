@@ -13,7 +13,11 @@ const EmailAndSmsAnalytics = () => {
 
     const fetchEmailCount = async () => {
         try {
+<<<<<<< HEAD
             const response = await axios.get('https://8080-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io/analytics/emailCount');
+=======
+            const response = await axios.get('https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/analytics/emailCount');
+>>>>>>> 5c0006b9ec96ad8f44c859f17bb14343daaf6817
             setEmailCount(response.data);
         } catch (error) {
             console.error(error);
@@ -22,7 +26,11 @@ const EmailAndSmsAnalytics = () => {
 
     const fetchSMSCount = async () => {
         try {
+<<<<<<< HEAD
             const response = await axios.get('https://8080-dfeaeacbeeefeedabbcfeaeaadbdbabf.project.examly.io/analytics/smsCount');
+=======
+            const response = await axios.get('https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/analytics/smsCount');
+>>>>>>> 5c0006b9ec96ad8f44c859f17bb14343daaf6817
             setSmsCount(response.data);
         } catch (error) {
             console.error(error);
