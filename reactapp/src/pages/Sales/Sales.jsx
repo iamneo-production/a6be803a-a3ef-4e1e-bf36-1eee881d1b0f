@@ -28,6 +28,7 @@ export default function Sales() {
 
   useEffect(() => {
     getallsales()
+    console.log(sales)
   },[]);
 
 const getallsales = async() =>{
@@ -395,4 +396,3 @@ return (
   </div>
 );
 }
-
