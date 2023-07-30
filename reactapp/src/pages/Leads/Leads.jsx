@@ -7,7 +7,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
 
-const LEAD_BASE_REST_API_URL = 'https://8080-cdfadaffefeedabbcfeaeaadbdbabf.project.examly.io/crm/lead';
+const LEAD_BASE_REST_API_URL = 'https://8080-bfbaabafbcacdefeedabbcfeaeaadbdbabf.project.examly.io/crm/lead';
 
 export default function LeadPage() {
   const [leads, setLeads] = useState([]);
